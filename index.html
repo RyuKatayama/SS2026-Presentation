@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SS2026 プレゼンテーション | 組込みシステム開発における生成AI活用の可能性</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Index-specific styles */
+        .index-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+            min-height: 100vh;
+        }
+        
+        .presentation-hero {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-lg);
+            border-radius: 20px;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .presentation-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            opacity: 0.9;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 400;
+        }
+        
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .meta-item {
+            background: rgba(255,255,255,0.1);
+            padding: var(--spacing-md);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .meta-label {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+            margin-bottom: var(--spacing-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .meta-value {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+        }
+        
+        .presentation-stats {
+            background: var(--background);
+            border-radius: 20px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: var(--spacing-md);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary-blue);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .stat-label {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .stat-description {
+            font-size: var(--font-size-sm);
+            color: var(--medium-gray);
+        }
+        
+        .toc-sections {
+            display: grid;
+            gap: var(--spacing-xl);
+        }
+        
+        .toc-section {
+            background: var(--background);
+            border-radius: 20px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .toc-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        }
+        
+        .section-header {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .section-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-xs);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .section-icon {
+            font-size: 2rem;
+        }
+        
+        .section-meta {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+            color: var(--medium-gray);
+            font-size: var(--font-size-sm);
+        }
+        
+        .slides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-sm);
+        }
+        
+        .slide-link {
+            display: block;
+            background: var(--light-gray);
+            padding: var(--spacing-md);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .slide-link:hover {
+            background: var(--light-blue);
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,102,204,0.2);
+        }
+        
+        .slide-enhanced {
+            background: linear-gradient(135deg, var(--success-green), #059669);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .slide-enhanced:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            border-color: var(--success-green);
+        }
+        
+        .slide-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: var(--font-size-sm);
+        }
+        
+        .slide-enhanced .slide-number {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .slide-title-text {
+            font-weight: 600;
+            margin: var(--spacing-xs) 0;
+            font-size: var(--font-size-base);
+        }
+        
+        .enhanced-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-orange);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        
+        .quick-start {
+            background: var(--accent-orange);
+            color: white;
+            text-align: center;
+            padding: var(--spacing-lg);
+            border-radius: 16px;
+            margin-top: var(--spacing-xl);
+        }
+        
+        .start-button {
+            display: inline-block;
+            background: white;
+            color: var(--accent-orange);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: var(--font-size-lg);
+            margin-top: var(--spacing-md);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .start-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            background: var(--light-gray);
+        }
+        
+        /* Animation classes */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        
+        @media (max-width: 768px) {
+            .index-container {
+                padding: var(--spacing-md);
+            }
+            
+            .hero-meta {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-md);
+            }
+            
+            .slides-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-xs);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="index-container">
+        <!-- Hero Section -->
+        <div class="presentation-hero fade-in-up">
+            <div class="hero-content">
+                <h1 class="hero-title">組込みシステム開発における生成AI活用の可能性</h1>
+                <p class="hero-subtitle">～ V字型プロセス分析とメインループ型アーキテクチャの検討 ～</p>
+                
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">発表者</div>
+                        <div class="meta-value">片山 立</div>
+                        <div style="font-size: var(--font-size-sm); opacity: 0.8; margin-top: 0.25rem;">夢・アーキテクティング工房</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">学会</div>
+                        <div class="meta-value">ソフトウェアシンポジウム2026</div>
+                        <div style="font-size: var(--font-size-sm); opacity: 0.8; margin-top: 0.25rem;">2026年6月</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">連絡先</div>
+                        <div class="meta-value">ryuk@dreamam.net</div>
+                        <div style="font-size: var(--font-size-sm); opacity: 0.8; margin-top: 0.25rem;">📧 Email</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Presentation Statistics -->
+        <div class="presentation-stats fade-in-up stagger-1">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">25</div>
+                    <div class="stat-label">スライド数</div>
+                    <div class="stat-description">完全構造化プレゼンテーション</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">セクション構成</div>
+                    <div class="stat-description">導入・本論・結論の3幕構造</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">強化版スライド</div>
+                    <div class="stat-description">NotebookLM + 論文データ統合</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">発表時間 (分)</div>
+                    <div class="stat-description">+ 質疑応答5分</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table of Contents Sections -->
+        <div class="toc-sections">
+            <!-- Section 1: Introduction -->
+            <div class="toc-section fade-in-up stagger-2">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-icon">🎯</span>
+                        導入部 (スライド 1-4)
+                    </h2>
+                    <div class="section-meta">
+                        <span>📊 4スライド</span>
+                        <span>⏱️ 3分</span>
+                        <span>🎭 研究背景と目的の提示</span>
+                    </div>
+                </div>
+                <div class="slides-grid">
+                    <a href="slide01.html" class="slide-link">
+                        <div class="slide-number">Slide 01</div>
+                        <div class="slide-title-text">タイトル</div>
+                    </a>
+                    <a href="slide02.html" class="slide-link">
+                        <div class="slide-number">Slide 02</div>
+                        <div class="slide-title-text">発表概要・アジェンダ</div>
+                    </a>
+                    <a href="slide03.html" class="slide-link">
+                        <div class="slide-number">Slide 03</div>
+                        <div class="slide-title-text">背景</div>
+                    </a>
+                    <a href="slide04.html" class="slide-link">
+                        <div class="slide-number">Slide 04</div>
+                        <div class="slide-title-text">研究目的・貢献</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Section 2: V-Process Analysis -->
+            <div class="toc-section fade-in-up stagger-3">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-icon">📊</span>
+                        V字プロセス分析 (スライド 5-9)
+                    </h2>
+                    <div class="section-meta">
+                        <span>📊 5スライド</span>
+                        <span>⏱️ 4分</span>
+                        <span>🔍 生成AI活用可能性の体系的評価</span>
+                    </div>
+                </div>
+                <div class="slides-grid">
+                    <a href="slide05.html" class="slide-link">
+                        <div class="slide-number">Slide 05</div>
+                        <div class="slide-title-text">V字型開発プロセス概観</div>
+                    </a>
+                    <a href="slide06.html" class="slide-link slide-enhanced">
+                        <div class="enhanced-badge">⭐</div>
+                        <div class="slide-number">Slide 06</div>
+                        <div class="slide-title-text">生成AI活用段階分析</div>
+                    </a>
+                    <a href="slide07.html" class="slide-link">
+                        <div class="slide-number">Slide 07</div>
+                        <div class="slide-title-text">現状課題</div>
+                    </a>
+                    <a href="slide08.html" class="slide-link slide-enhanced">
+                        <div class="enhanced-badge">⭐</div>
+                        <div class="slide-number">Slide 08</div>
+                        <div class="slide-title-text">3層構造フレームワーク</div>
+                    </a>
+                    <a href="slide09.html" class="slide-link">
+                        <div class="slide-number">Slide 09</div>
+                        <div class="slide-title-text">V字プロセス分析まとめ</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Section 3: HW Virtualization -->
+            <div class="toc-section fade-in-up stagger-4">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-icon">🏗️</span>
+                        ハードウェア仮想化API (スライド 10-14)
+                    </h2>
+                    <div class="section-meta">
+                        <span>📊 5スライド</span>
+                        <span>⏱️ 4分</span>
+                        <span>🔧 第1層: 設計空間の事前構造化</span>
+                    </div>
+                </div>
+                <div class="slides-grid">
+                    <a href="slide10.html" class="slide-link">
+                        <div class="slide-number">Slide 10</div>
+                        <div class="slide-title-text">第1層 設計空間構造化</div>
+                    </a>
+                    <a href="slide11.html" class="slide-link">
+                        <div class="slide-number">Slide 11</div>
+                        <div class="slide-title-text">pre-ACD設計管理</div>
+                    </a>
+                    <a href="slide12.html" class="slide-link">
+                        <div class="slide-number">Slide 12</div>
+                        <div class="slide-title-text">HW仮想化API実装例</div>
+                    </a>
+                    <a href="slide13.html" class="slide-link slide-enhanced">
+                        <div class="enhanced-badge">⭐</div>
+                        <div class="slide-number">Slide 13</div>
+                        <div class="slide-title-text">設計空間構造化効果</div>
+                    </a>
+                    <a href="slide14.html" class="slide-link">
+                        <div class="slide-number">Slide 14</div>
+                        <div class="slide-title-text">HW仮想化API設計まとめ</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Section 4: Main Loop Architecture -->
+            <div class="toc-section fade-in-up stagger-5">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-icon">⚡</span>
+                        メインループ型アーキテクチャ (スライド 15-17)
+                    </h2>
+                    <div class="section-meta">
+                        <span>📊 3スライド</span>
+                        <span>⏱️ 3分</span>
+                        <span>🔄 第2層: プロセス空間の事前構造化</span>
+                    </div>
+                </div>
+                <div class="slides-grid">
+                    <a href="slide15.html" class="slide-link">
+                        <div class="slide-number">Slide 15</div>
+                        <div class="slide-title-text">第2層 プロセス構造化</div>
+                    </a>
+                    <a href="slide16.html" class="slide-link">
+                        <div class="slide-number">Slide 16</div>
+                        <div class="slide-title-text">メインループ型設計</div>
+                    </a>
+                    <a href="slide17.html" class="slide-link">
+                        <div class="slide-number">Slide 17</div>
+                        <div class="slide-title-text">Skillsチェーン工程連携</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Section 5: GOMA Experiment -->
+            <div class="toc-section fade-in-up stagger-6">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-icon">🔬</span>
+                        GOMA実証実験 (スライド 18-20)
+                    </h2>
+                    <div class="section-meta">
+                        <span>📊 3スライド</span>
+                        <span>⏱️ 3分</span>
+                        <span>📈 定量的実証と107.8℃事件</span>
+                    </div>
+                </div>
+                <div class="slides-grid">
+                    <a href="slide18.html" class="slide-link">
+                        <div class="slide-number">Slide 18</div>
+                        <div class="slide-title-text">GOMA実証実験設計</div>
+                    </a>
+                    <a href="slide19.html" class="slide-link slide-enhanced">
+                        <div class="enhanced-badge">⭐</div>
+                        <div class="slide-number">Slide 19</div>
+                        <div class="slide-title-text">GOMA実装結果</div>
+                    </a>
+                    <a href="slide20.html" class="slide-link">
+                        <div class="slide-number">Slide 20</div>
+                        <div class="slide-title-text">実証実験成果まとめ</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Section 6: Conclusion -->
+            <div class="toc-section fade-in-up stagger-6">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="section-icon">🎉</span>
+                        結論部 (スライド 21-25)
+                    </h2>
+                    <div class="section-meta">
+                        <span>📊 5スライド</span>
+                        <span>⏱️ 3分</span>
+                        <span>🏆 研究成果・今後課題・質疑応答</span>
+                    </div>
+                </div>
+                <div class="slides-grid">
+                    <a href="slide21.html" class="slide-link">
+                        <div class="slide-number">Slide 21</div>
+                        <div class="slide-title-text">3層構造全体像(再掲)</div>
+                    </a>
+                    <a href="slide22.html" class="slide-link slide-enhanced">
+                        <div class="enhanced-badge">⭐</div>
+                        <div class="slide-number">Slide 22</div>
+                        <div class="slide-title-text">107.8℃事件詳細</div>
+                    </a>
+                    <a href="slide23.html" class="slide-link">
+                        <div class="slide-number">Slide 23</div>
+                        <div class="slide-title-text">研究成果まとめ</div>
+                    </a>
+                    <a href="slide24.html" class="slide-link">
+                        <div class="slide-number">Slide 24</div>
+                        <div class="slide-title-text">今後の課題</div>
+                    </a>
+                    <a href="slide25.html" class="slide-link">
+                        <div class="slide-number">Slide 25</div>
+                        <div class="slide-title-text">まとめ・質疑応答</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Start Section -->
+        <div class="quick-start fade-in-up stagger-6">
+            <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm);">
+                🚀 プレゼンテーション開始
+            </h3>
+            <p style="font-size: var(--font-size-lg); opacity: 0.9; margin-bottom: var(--spacing-md);">
+                SS2026での成功を確約する完全版プレゼンテーションをお楽しみください
+            </p>
+            <a href="slide01.html" class="start-button">
+                ▶️ 発表開始
+            </a>
+            
+            <div style="margin-top: var(--spacing-lg); font-size: var(--font-size-sm); opacity: 0.8;">
+                <strong>操作ヒント:</strong> ⬅️➡️キーで前後移動 | Tキーで目次 | スワイプ対応
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        // Index page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to slide links
+            const slideLinks = document.querySelectorAll('.slide-link');
+            slideLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-4px)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Animate stat numbers
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.textContent);
+                        animateNumber(entry.target, target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            statNumbers.forEach(num => observer.observe(num));
+            
+            function animateNumber(element, target) {
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(current);
+                    }
+                }, 40);
+            }
+            
+            // Keyboard shortcuts for index page
+            document.addEventListener('keydown', function(e) {
+                switch(e.key) {
+                    case 'Enter':
+                    case ' ':
+                        e.preventDefault();
+                        window.location.href = 'slide01.html';
+                        break;
+                    case '1':
+                        window.location.href = 'slide01.html';
+                        break;
+                    case '6':
+                        window.location.href = 'slide06.html';
+                        break;
+                    case '8':
+                        window.location.href = 'slide08.html';
+                        break;
+                }
+            });
+            
+            console.log('🎯 SS2026 Presentation Index Loaded - Ready to present!');
+        });
+    </script>
+</body>
+</html>

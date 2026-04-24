@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 10: 第1層 - 設計空間の事前構造化 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">10 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 40%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">第1層 - 設計空間の事前構造化</h1>
+            <p class="slide-subtitle">ハードウェア仮想化APIによる制約管理アプローチ</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- 問題定義 -->
+            <div class="content-card animate-fade-in" style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--warning-red);">
+                <div class="card-header">
+                    <div class="card-icon" style="background: var(--warning-red);">❌</div>
+                    <div class="card-title">現状の問題</div>
+                </div>
+                <div class="card-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+                        <div>
+                            <strong style="color: var(--warning-red); margin-bottom: var(--spacing-sm); display: block;">🤖 生成AIの限界</strong>
+                            <ul class="styled-list">
+                                <li>ハードウェア制約を理解困難</li>
+                                <li>メモリ・CPU制限の考慮不足</li>
+                                <li>リアルタイム制約への配慮欠如</li>
+                                <li>ペリフェラル依存性の理解不足</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="color: var(--warning-red); margin-bottom: var(--spacing-sm); display: block;">💥 結果として発生する問題</strong>
+                            <ul class="styled-list">
+                                <li>非実用的なコードの生成</li>
+                                <li>メモリ制約違反率67%</li>
+                                <li>コンパイル成功率45%</li>
+                                <li>実行時間予測誤差±40%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 解決策の提案 -->
+            <div class="content-card animate-fade-in stagger-1" style="background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--success-green); margin-top: var(--spacing-lg);">
+                <div class="card-header">
+                    <div class="card-icon" style="background: var(--success-green);">✅</div>
+                    <div class="card-title">解決策: ハードウェア仮想化API</div>
+                </div>
+                <div class="card-content">
+                    <div style="font-size: var(--font-size-lg); line-height: 1.6; margin-bottom: var(--spacing-md);">
+                        <strong>ハードウェア制約を抽象化レイヤで隠蔽</strong>し、生成AIに与える<strong>設計空間を事前に構造化</strong>することで、制約充足可能な範囲でのみコード生成を誘導
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md);">
+                        <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 8px;">
+                            <div style="font-size: 2rem; margin-bottom: var(--spacing-xs); color: var(--success-green);">🛡️</div>
+                            <strong>制約隠蔽</strong>
+                            <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">複雑なHW制約を抽象化</p>
+                        </div>
+                        <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 8px;">
+                            <div style="font-size: 2rem; margin-bottom: var(--spacing-xs); color: var(--success-green);">📊</div>
+                            <strong>空間構造化</strong>
+                            <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">設計選択肢を明確化</p>
+                        </div>
+                        <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 8px;">
+                            <div style="font-size: 2rem; margin-bottom: var(--spacing-xs); color: var(--success-green);">🎯</div>
+                            <strong>生成誘導</strong>
+                            <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">適切な範囲でのコード生成</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- アプローチの詳細 -->
+            <div class="content-grid two-col animate-fade-in stagger-2">
+                <div class="content-card" style="border-left: 4px solid var(--primary-blue);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--primary-blue);">🏗️</div>
+                        <div class="card-title">抽象化レイヤ設計</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="expandable-section">
+                            <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                                <span>🖥️ ハードウェア抽象化の仕組み</span>
+                                <span class="expand-icon">▼</span>
+                            </button>
+                            <div class="expand-content">
+                                <div class="code-block" style="margin: var(--spacing-sm) 0;">
+// ハードウェア制約の抽象化例
+typedef struct {
+    uint32_t memory_budget;    // メモリ予算
+    uint32_t max_exec_time_us; // 最大実行時間
+    hw_resource_mask_t resources; // 使用リソース
+    power_class_t power_limit; // 電力制限
+} hw_constraint_t;</div>
+                                <ul class="styled-list" style="margin-top: var(--spacing-sm);">
+                                    <li>複雑な制約を構造化データで表現</li>
+                                    <li>生成AIが理解しやすい形式に変換</li>
+                                    <li>制約違反の自動検出機能</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--accent-orange);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--accent-orange);">📋</div>
+                        <div class="card-title">設計空間の構造化</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="expandable-section">
+                            <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                                <span>🗺️ 制約充足可能空間の定義</span>
+                                <span class="expand-icon">▼</span>
+                            </button>
+                            <div class="expand-content">
+                                <div style="background: var(--light-gray); padding: var(--spacing-md); border-radius: 8px; margin: var(--spacing-sm) 0;">
+                                    <strong style="display: block; margin-bottom: var(--spacing-sm);">設計空間の事前分析:</strong>
+                                    <ol style="font-size: var(--font-size-sm); color: var(--medium-gray);">
+                                        <li>ハードウェア仕様の調査・分析</li>
+                                        <li>制約条件の抽出・定量化</li>
+                                        <li>制約充足可能領域の算出</li>
+                                        <li>設計パターンテンプレートの作成</li>
+                                        <li>生成AI向けガイドラインの策定</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実装戦略 -->
+            <div class="content-card animate-fade-in stagger-3" style="background: var(--light-blue); border: 2px solid var(--primary-blue); margin-top: var(--spacing-lg);">
+                <div style="text-align: center; margin-bottom: var(--spacing-md);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--text-dark);">
+                        🚀 実装戦略
+                    </h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md);">
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 12px; border-left: 4px solid var(--dark-slate);">
+                        <div style="font-weight: 700; color: var(--dark-slate); margin-bottom: var(--spacing-xs);">Step 1</div>
+                        <strong>pre-ACD設計</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">制約パラメータ管理</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 12px; border-left: 4px solid var(--primary-blue);">
+                        <div style="font-weight: 700; color: var(--primary-blue); margin-bottom: var(--spacing-xs);">Step 2</div>
+                        <strong>API実装</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">仮想化レイヤ構築</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 12px; border-left: 4px solid var(--success-green);">
+                        <div style="font-weight: 700; color: var(--success-green); margin-bottom: var(--spacing-xs);">Step 3</div>
+                        <strong>効果検証</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">制約充足率の改善確認</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次のスライドへの接続 -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-lg); background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: white; border-radius: 16px;" class="animate-fade-in stagger-4">
+                <p style="font-size: var(--font-size-lg); opacity: 0.95;">
+                    次のスライドでは<strong>pre-ACD</strong>による<br>
+                    <strong>具体的な設計パラメータ管理手法</strong>を詳説します
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 Layer 1: Design Space Pre-structuring Slide (10/25) Loaded');
+        });
+    </script>
+</body>
+</html>

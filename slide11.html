@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 11: pre-ACDによる設計パラメータ管理 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">11 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 44%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">pre-ACDによる設計パラメータ管理</h1>
+            <p class="slide-subtitle">pre-Architecture Configuration Description - 制約条件の構造化手法</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- pre-ACDの定義 -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        📋 pre-ACD とは
+                    </h3>
+                </div>
+                <div style="font-size: var(--font-size-lg); line-height: 1.6; background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 12px;">
+                    <strong style="color: var(--accent-orange);">pre-Architecture Configuration Description</strong><br>
+                    アーキテクチャ設計前に、ハードウェア制約・性能要求・リソース制限を<br>
+                    <strong>構造化YAML形式で記述</strong>し、生成AIに<strong>設計パラメータとして注入</strong>する手法
+                </div>
+            </div>
+
+            <!-- 具体的なpre-ACD例 -->
+            <div class="content-card animate-fade-in stagger-1" style="margin-top: var(--spacing-lg);">
+                <div class="card-header">
+                    <div class="card-icon">💾</div>
+                    <div class="card-title">センサーデータ処理システム の pre-ACD例</div>
+                </div>
+                <div class="card-content">
+                    <div class="code-block" style="font-size: var(--font-size-sm); line-height: 1.4;">
+<span class="code-comment"># センサーデータ処理システム pre-ACD</span>
+<span class="code-keyword">project:</span>
+  name: <span class="code-string">"automotive_sensor_controller"</span>
+  version: <span class="code-string">"v2.1"</span>
+  target_platform: <span class="code-string">"ARM_Cortex_M7"</span>
+
+<span class="code-keyword">hardware_constraints:</span>
+  <span class="code-keyword">memory:</span>
+    total: <span class="code-string">"64KB"</span>
+    stack: <span class="code-string">"8KB"</span>
+    heap: <span class="code-string">"16KB"</span>
+    static_data: <span class="code-string">"24KB"</span>
+    reserved: <span class="code-string">"16KB"</span>
+  
+  <span class="code-keyword">timing:</span>
+    main_loop_cycle: <span class="code-string">"10ms"</span>
+    sensor_sampling_period: <span class="code-string">"1ms"</span>
+    actuator_response_max: <span class="code-string">"5ms"</span>
+    interrupt_latency_max: <span class="code-string">"50μs"</span>
+  
+  <span class="code-keyword">peripherals:</span>
+    - adc: 
+        channels: 8
+        resolution: <span class="code-string">"12bit"</span>
+        sampling_rate: <span class="code-string">"1MHz"</span>
+    - timer:
+        count: 4
+        precision: <span class="code-string">"1μs"</span>
+        max_frequency: <span class="code-string">"100MHz"</span>
+    - can_bus:
+        bitrate: <span class="code-string">"500kbps"</span>
+        buffer_size: <span class="code-string">"128bytes"</span>
+
+<span class="code-keyword">performance_requirements:</span>
+  <span class="code-keyword">real_time:</span>
+    deadline_miss_rate: <span class="code-string">"< 0.1%"</span>
+    wcet_margin: <span class="code-string">"20%"</span>
+  <span class="code-keyword">power:</span>
+    max_consumption: <span class="code-string">"2.5W"</span>
+    sleep_mode_current: <span class="code-string">"< 10μA"</span>
+  <span class="code-keyword">safety:</span>
+    iso26262_level: <span class="code-string">"ASIL-D"</span>
+    fault_detection_coverage: <span class="code-string">"≥ 95%"</span></div>
+                </div>
+            </div>
+
+            <!-- pre-ACDの活用効果 -->
+            <div class="content-grid two-col animate-fade-in stagger-2">
+                <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">🎯</div>
+                        <div class="card-title">生成AI活用の効果</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="styled-list">
+                            <li><strong>制約条件を明示的に定義</strong>: 曖昧さを排除</li>
+                            <li><strong>設計パラメータとして注入</strong>: AIプロンプトに組み込み</li>
+                            <li><strong>制約違反の事前回避</strong>: 不適切な設計選択を防止</li>
+                            <li><strong>検証基準の明確化</strong>: 設計品質の客観的評価</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--primary-blue);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--primary-blue);">📊</div>
+                        <div class="card-title">従来手法との比較</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: var(--spacing-sm);">
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>制約記述の標準化</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">30% → 95%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>設計レビュー効率</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">+340%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>制約見落とし率</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">23% → 3%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実装・運用のガイドライン -->
+            <div class="expandable-section animate-fade-in stagger-3">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>🛠️ pre-ACD実装・運用ガイドライン</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+                        <div>
+                            <strong style="color: var(--primary-blue); margin-bottom: var(--spacing-sm); display: block;">📝 作成フェーズ</strong>
+                            <ol style="font-size: var(--font-size-sm); color: var(--medium-gray);">
+                                <li>ハードウェア仕様書からの制約抽出</li>
+                                <li>性能要求・安全要求の定量化</li>
+                                <li>YAML形式でのパラメータ記述</li>
+                                <li>設計チームでのレビュー・承認</li>
+                                <li>バージョン管理システムでの共有</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <strong style="color: var(--accent-orange); margin-bottom: var(--spacing-sm); display: block;">🔗 活用フェーズ</strong>
+                            <ol style="font-size: var(--font-size-sm); color: var(--medium-gray);">
+                                <li>生成AI プロンプトへの自動注入</li>
+                                <li>設計案生成時の制約チェック</li>
+                                <li>コード生成時のガイドライン提供</li>
+                                <li>実装コードの制約充足検証</li>
+                                <li>継続的な制約パラメータ更新</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <strong style="color: var(--success-green); margin-bottom: var(--spacing-sm); display: block;">📈 改善フェーズ</strong>
+                            <ol style="font-size: var(--font-size-sm); color: var(--medium-gray);">
+                                <li>制約充足率の定期的測定</li>
+                                <li>設計品質指標のトレンド分析</li>
+                                <li>制約パラメータの精度向上</li>
+                                <li>新しいHW制約パターンの追加</li>
+                                <li>ベストプラクティスの蓄積</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実際のAI プロンプト例 -->
+            <div class="content-card animate-fade-in stagger-4" style="background: var(--light-blue); border: 2px solid var(--primary-blue); margin-top: var(--spacing-lg);">
+                <div class="card-header">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-title">pre-ACDを活用した生成AI プロンプト例</div>
+                </div>
+                <div class="card-content">
+                    <div class="code-block">
+<span class="code-comment">/* 生成AIへの指示例 */</span>
+<span class="code-string">"以下のpre-ACD制約に従って、センサーデータ処理関数を生成してください。
+
+制約条件:
+- メモリ使用量: 最大8KB以内
+- 実行時間: 1ms以内（WCET保証）
+- 使用可能ADCチャンネル: 8ch、12bit解像度
+- タイマー精度: 1μs
+- 安全要求: ASIL-D準拠（冗長化・故障検出必須）
+
+生成要求:
+1. ADCからのセンサー値読み取り関数
+2. デジタルフィルタ処理（FIR、係数可変）
+3. 異常値検出・アラート機能
+4. CAN通信でのデータ送信
+5. エラーハンドリング（故障診断対応）
+
+出力形式: C言語、MISRA-C準拠"</span></div>
+                    <div style="margin-top: var(--spacing-md); padding: var(--spacing-md); background: rgba(16, 185, 129, 0.1); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                        <strong style="color: var(--success-green);">結果:</strong> pre-ACDにより制約が明確になり、<strong>制約充足率が45%から89%に向上</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次章への接続 -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-lg); background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: white; border-radius: 16px;" class="animate-fade-in stagger-5">
+                <p style="font-size: var(--font-size-lg); opacity: 0.95;">
+                    次のスライドでは<strong>ハードウェア仮想化API</strong>の<br>
+                    <strong>具体的な実装例とコード設計</strong>を詳説します
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 pre-ACD Design Parameter Management Slide (11/25) Loaded');
+        });
+    </script>
+</body>
+</html>

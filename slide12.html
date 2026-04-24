@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 12: ハードウェア仮想化API実装例 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">12 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 48%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">ハードウェア仮想化API実装例</h1>
+            <p class="slide-subtitle">制約充足保証付きタスク実行の具体的実装</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- API仕様の概要 -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        🔧 ハードウェア仮想化API設計
+                    </h3>
+                </div>
+                <div style="font-size: var(--font-size-lg); line-height: 1.6; background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 12px;">
+                    制約チェックをAPIレベルで強制し、<strong style="color: var(--accent-orange);">WCET解析との統合</strong>により<br>
+                    デバッグ・プロファイリング支援機能を組み込んだ実装アプローチ
+                </div>
+            </div>
+
+            <!-- コア API実装 -->
+            <div class="content-card animate-fade-in stagger-1">
+                <div class="card-header">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">制約充足保証付きタスク実行API</div>
+                </div>
+                <div class="card-content">
+                    <div class="code-block">
+<span class="code-comment">// ハードウェア仮想化API - 核心実装</span>
+<span class="code-keyword">typedef struct</span> {
+    uint32_t max_execution_time_us;  <span class="code-comment">// 最大実行時間制約</span>
+    uint32_t memory_budget_bytes;    <span class="code-comment">// メモリ予算制約</span>
+    hw_resource_t required_resources; <span class="code-comment">// 必要リソース仕様</span>
+    power_profile_t power_limit;     <span class="code-comment">// 電力制限プロファイル</span>
+    safety_level_t safety_req;       <span class="code-comment">// 安全要求レベル</span>
+} task_constraint_t;
+
+<span class="code-comment">// 制約充足保証付きタスク実行関数</span>
+<span class="code-keyword">int</span> <span class="code-function">hw_constrained_execute</span>(
+    task_func_t func,               <span class="code-comment">// 実行対象関数</span>
+    task_constraint_t* constraints, <span class="code-comment">// 制約条件</span>
+    <span class="code-keyword">void</span>* params,                 <span class="code-comment">// 実行パラメータ</span>
+    execution_result_t* result      <span class="code-comment">// 実行結果</span>
+) {
+    <span class="code-comment">// 1. 事前制約チェック</span>
+    <span class="code-keyword">if</span> (!validate_constraints(constraints)) {
+        <span class="code-keyword">return</span> HW_ERROR_CONSTRAINT_VIOLATION;
+    }
+    
+    <span class="code-comment">// 2. リソース予約・確保</span>
+    resource_handle_t res = reserve_resources(constraints->required_resources);
+    <span class="code-keyword">if</span> (!res.valid) {
+        <span class="code-keyword">return</span> HW_ERROR_RESOURCE_UNAVAILABLE;
+    }
+    
+    <span class="code-comment">// 3. WCET監視付き実行</span>
+    wcet_monitor_t monitor = wcet_monitor_start(constraints->max_execution_time_us);
+    
+    <span class="code-keyword">int</span> exec_result = func(params);
+    
+    wcet_stats_t stats = wcet_monitor_stop(monitor);
+    
+    <span class="code-comment">// 4. 制約充足確認</span>
+    <span class="code-keyword">if</span> (stats.execution_time_us > constraints->max_execution_time_us) {
+        result->violation_type = WCET_VIOLATION;
+        result->actual_time = stats.execution_time_us;
+    }
+    
+    <span class="code-comment">// 5. リソース解放</span>
+    release_resources(res);
+    
+    <span class="code-keyword">return</span> exec_result;
+}</div>
+                </div>
+            </div>
+
+            <!-- メモリ管理API -->
+            <div class="content-grid two-col animate-fade-in stagger-2">
+                <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">💾</div>
+                        <div class="card-title">制約チェック付きメモリ管理</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="code-block" style="font-size: 0.8rem;">
+<span class="code-comment">// メモリ制約チェック付きアロケータ</span>
+<span class="code-keyword">void</span>* <span class="code-function">hw_safe_malloc</span>(
+    <span class="code-keyword">size_t</span> size,
+    uint32_t max_lifetime_ms
+) {
+    <span class="code-comment">// メモリ予算チェック</span>
+    <span class="code-keyword">if</span> (get_available_memory() < size) {
+        log_constraint_violation(
+            MEMORY_BUDGET_EXCEEDED,
+            size, get_available_memory()
+        );
+        <span class="code-keyword">return</span> <span class="code-keyword">NULL</span>;
+    }
+    
+    <span class="code-comment">// 生存期間管理付きアロケーション</span>
+    memory_block_t* block = malloc_with_timeout(
+        size, max_lifetime_ms
+    );
+    
+    <span class="code-keyword">return</span> block ? block->ptr : <span class="code-keyword">NULL</span>;
+}</div>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--primary-blue);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--primary-blue);">⏱️</div>
+                        <div class="card-title">リアルタイム制約API</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="code-block" style="font-size: 0.8rem;">
+<span class="code-comment">// 周期実行制約API</span>
+<span class="code-keyword">int</span> <span class="code-function">hw_periodic_task_create</span>(
+    task_func_t task,
+    uint32_t period_ms,
+    uint32_t deadline_ms,
+    priority_t priority
+) {
+    <span class="code-comment">// スケジューラビリティ解析</span>
+    <span class="code-keyword">if</span> (!schedulability_check(
+        period_ms, deadline_ms, priority
+    )) {
+        <span class="code-keyword">return</span> HW_ERROR_UNSCHEDULABLE;
+    }
+    
+    <span class="code-comment">// 周期タスク登録</span>
+    <span class="code-keyword">return</span> register_periodic_task(
+        task, period_ms, deadline_ms, priority
+    );
+}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API設計原則と実装詳細 -->
+            <div class="content-card animate-fade-in stagger-3" style="background: var(--light-blue); border: 2px solid var(--primary-blue);">
+                <div class="card-header">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">API設計原則と統合機能</div>
+                </div>
+                <div class="card-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+                        <div>
+                            <strong style="color: var(--primary-blue); margin-bottom: var(--spacing-sm); display: block;">🛡️ 制約強制メカニズム</strong>
+                            <ul class="styled-list" style="font-size: var(--font-size-sm);">
+                                <li><strong>コンパイル時チェック</strong>: 静的解析による事前検証</li>
+                                <li><strong>実行時監視</strong>: リアルタイム制約違反検出</li>
+                                <li><strong>リソース保護</strong>: 排他制御・デッドロック回避</li>
+                                <li><strong>フォルトハンドリング</strong>: 制約違反時の安全処理</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="color: var(--accent-orange); margin-bottom: var(--spacing-sm); display: block;">📊 WCET解析統合</strong>
+                            <ul class="styled-list" style="font-size: var(--font-size-sm);">
+                                <li><strong>静的WCET計算</strong>: aiT等のツール連携</li>
+                                <li><strong>測定値統合</strong>: 実行時間プロファイリング</li>
+                                <li><strong>精度向上</strong>: ハイブリッド解析手法</li>
+                                <li><strong>信頼性保証</strong>: 統計的検証手法</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong style="color: var(--success-green); margin-bottom: var(--spacing-sm); display: block;">🔧 デバッグ・プロファイリング支援</strong>
+                            <ul class="styled-list" style="font-size: var(--font-size-sm);">
+                                <li><strong>制約違反ログ</strong>: 詳細なトレース機能</li>
+                                <li><strong>性能分析</strong>: ボトルネック特定支援</li>
+                                <li><strong>リソース監視</strong>: メモリ・CPU使用状況</li>
+                                <li><strong>可視化ツール</strong>: グラフィカルな解析UI</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実際の使用例 -->
+            <div class="expandable-section animate-fade-in stagger-4">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>🚗 車載制御システムでの実装例</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div class="code-block">
+<span class="code-comment">// 車載ECU制御タスクの実装例</span>
+<span class="code-keyword">void</span> <span class="code-function">engine_control_task</span>(<span class="code-keyword">void</span>* params) {
+    engine_params_t* ep = (engine_params_t*)params;
+    
+    <span class="code-comment">// 制約定義</span>
+    task_constraint_t constraints = {
+        .max_execution_time_us = <span class="code-number">5000</span>,        <span class="code-comment">// 5ms deadline</span>
+        .memory_budget_bytes = <span class="code-number">8192</span>,          <span class="code-comment">// 8KB予算</span>
+        .required_resources = ADC_CHANNELS_1_8 | TIMER_1,
+        .power_limit = POWER_CLASS_NORMAL,
+        .safety_req = ASIL_D                   <span class="code-comment">// 最高安全レベル</span>
+    };
+    
+    <span class="code-comment">// センサー読み取りタスク</span>
+    sensor_data_t sensor_data;
+    <span class="code-keyword">int</span> result = hw_constrained_execute(
+        read_engine_sensors,
+        &constraints,
+        &sensor_data,
+        <span class="code-keyword">NULL</span>
+    );
+    
+    <span class="code-keyword">if</span> (result != HW_SUCCESS) {
+        handle_constraint_violation(result);
+        <span class="code-keyword">return</span>;
+    }
+    
+    <span class="code-comment">// 制御演算</span>
+    constraints.max_execution_time_us = <span class="code-number">3000</span>;  <span class="code-comment">// 3ms deadline</span>
+    control_output_t output;
+    
+    result = hw_constrained_execute(
+        calculate_engine_control,
+        &constraints,
+        &sensor_data,
+        &output
+    );
+    
+    <span class="code-comment">// アクチュエータ制御</span>
+    apply_engine_control(&output);
+}</div>
+                    <div style="margin-top: var(--spacing-md); padding: var(--spacing-md); background: rgba(16, 185, 129, 0.1); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                        <strong style="color: var(--success-green);">実装効果:</strong> 制約違反の早期検出により、<strong>デバッグ時間が60%短縮</strong>、システム安定性が大幅向上
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次章への接続 -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-lg); background: linear-gradient(135deg, var(--success-green), #059669); color: white; border-radius: 16px;" class="animate-fade-in stagger-5">
+                <p style="font-size: var(--font-size-lg); opacity: 0.95;">
+                    次のスライドでは<strong>設計空間構造化の具体的効果</strong>を<br>
+                    <strong>定量的データで実証</strong>します
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 Hardware Virtualization API Implementation Slide (12/25) Loaded');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 16: メインループ型アーキテクチャ設計 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">16 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 64%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">メインループ型アーキテクチャ設計</h1>
+            <p class="slide-subtitle">実時間制約対応の具体的実装手法</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- メインループの概要 -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        🔄 メインループ型アーキテクチャ
+                    </h3>
+                </div>
+                <div style="font-size: var(--font-size-lg); line-height: 1.6; background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 12px;">
+                    各タスクの<strong style="color: var(--accent-orange);">WCET（最悪実行時間）を事前計算</strong>し、<br>
+                    <strong>周期タイミングの保証</strong>と<strong>優先度ベース割り込み処理</strong>により<br>
+                    実時間性を保証しつつ生成AIで効率化できる部分を明確化
+                </div>
+            </div>
+
+            <!-- メインループの実装例 -->
+            <div class="content-card animate-fade-in stagger-1">
+                <div class="card-header">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-title">メインループ実装例</div>
+                </div>
+                <div class="card-content">
+                    <div class="code-block">
+<span class="code-comment">// メインループ型アーキテクチャの実装例</span>
+<span class="code-keyword">int</span> <span class="code-function">main</span>() {
+    system_init();
+    task_scheduler_init();
+    
+    <span class="code-comment">// メインタスクループ（10ms周期）</span>
+    <span class="code-keyword">while</span>(<span class="code-number">1</span>) {
+        uint32_t cycle_start = get_system_time_us();
+        
+        <span class="code-comment">// Phase 1: センサーデータ取得（WCET: 2ms）</span>
+        sensor_data_t sensor_data = read_sensors();
+        wcet_checkpoint(cycle_start, <span class="code-number">2000</span>, <span class="code-string">"sensor_read"</span>);
+        
+        <span class="code-comment">// Phase 2: データ処理・制御演算（WCET: 5ms）</span>
+        <span class="code-comment">// ↓ 生成AI支援可能領域 ↓</span>
+        control_output_t control_output = process_sensor_data(sensor_data);
+        wcet_checkpoint(cycle_start, <span class="code-number">7000</span>, <span class="code-string">"data_processing"</span>);
+        <span class="code-comment">// ↑ 生成AI支援可能領域 ↑</span>
+        
+        <span class="code-comment">// Phase 3: アクチュエータ制御（WCET: 1ms）</span>
+        apply_actuator_control(control_output);
+        wcet_checkpoint(cycle_start, <span class="code-number">8000</span>, <span class="code-string">"actuator_control"</span>);
+        
+        <span class="code-comment">// Phase 4: 周期調整・次サイクル待機</span>
+        wait_for_next_cycle(<span class="code-number">10000</span>); <span class="code-comment">// Total: 10ms cycle</span>
+    }
+}</div>
+                </div>
+            </div>
+
+            <!-- 実時間制約対応の詳細 -->
+            <div class="content-grid two-col animate-fade-in stagger-2">
+                <div class="content-card" style="border-left: 4px solid var(--warning-red);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--warning-red);">⏱️</div>
+                        <div class="card-title">WCET保証メカニズム</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="code-block" style="font-size: 0.8rem;">
+<span class="code-comment">// WCET監視・保証実装</span>
+<span class="code-keyword">void</span> <span class="code-function">wcet_checkpoint</span>(
+    uint32_t cycle_start,
+    uint32_t expected_elapsed_us,
+    <span class="code-keyword">const char</span>* task_name
+) {
+    uint32_t actual_elapsed = 
+        get_system_time_us() - cycle_start;
+    
+    <span class="code-keyword">if</span> (actual_elapsed > expected_elapsed_us) {
+        <span class="code-comment">// WCET違反検出</span>
+        log_wcet_violation(
+            task_name, 
+            expected_elapsed_us, 
+            actual_elapsed
+        );
+        
+        <span class="code-comment">// 緊急時処理</span>
+        trigger_emergency_response();
+    }
+}</div>
+                        <ul class="styled-list" style="margin-top: var(--spacing-sm); font-size: var(--font-size-sm);">
+                            <li>各フェーズでのWCET監視</li>
+                            <li>制約違反時の即座な検出</li>
+                            <li>緊急時の安全処理実行</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">🎯</div>
+                        <div class="card-title">生成AI支援箇所</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="background: rgba(16, 185, 129, 0.1); padding: var(--spacing-md); border-radius: 8px; margin-bottom: var(--spacing-sm);">
+                            <strong style="color: var(--success-green);">AI支援可能領域</strong><br>
+                            <span style="font-size: var(--font-size-sm); color: var(--medium-gray);">データ処理アルゴリズムの生成・最適化</span>
+                        </div>
+                        
+                        <ul class="styled-list" style="font-size: var(--font-size-sm);">
+                            <li><strong>フィルタリング</strong>: デジタル信号処理アルゴリズム</li>
+                            <li><strong>制御演算</strong>: PID制御・状態フィードバック</li>
+                            <li><strong>異常検出</strong>: 統計的外れ値検出</li>
+                            <li><strong>データ変換</strong>: 座標変換・単位変換</li>
+                        </ul>
+                        
+                        <div style="background: rgba(239, 68, 68, 0.1); padding: var(--spacing-sm); border-radius: 6px; margin-top: var(--spacing-sm);">
+                            <strong style="color: var(--warning-red); font-size: var(--font-size-sm);">制約条件</strong><br>
+                            <span style="font-size: 0.8rem; color: var(--medium-gray);">WCET制約を満たすコード生成必須</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 優先度ベース割り込み処理 -->
+            <div class="content-card animate-fade-in stagger-3" style="background: var(--light-blue); border: 2px solid var(--primary-blue);">
+                <div class="card-header">
+                    <div class="card-icon">🚨</div>
+                    <div class="card-title">優先度ベース割り込み処理設計</div>
+                </div>
+                <div class="card-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(250px, 1fr)); gap: var(--spacing-md);">
+                        <div>
+                            <h4 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">割り込み優先度階層</h4>
+                            <div style="display: grid; gap: var(--spacing-xs);">
+                                <div style="display: flex; justify-content: space-between; padding: var(--spacing-xs); background: rgba(239, 68, 68, 0.1); border-radius: 4px;">
+                                    <span style="font-size: var(--font-size-sm); font-weight: 600;">緊急停止</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--warning-red);">Priority 0</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: var(--spacing-xs); background: rgba(245, 158, 11, 0.1); border-radius: 4px;">
+                                    <span style="font-size: var(--font-size-sm); font-weight: 600;">安全監視</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--warning-yellow);">Priority 1</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: var(--spacing-xs); background: rgba(0, 102, 204, 0.1); border-radius: 4px;">
+                                    <span style="font-size: var(--font-size-sm); font-weight: 600;">制御タスク</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--primary-blue);">Priority 2</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: var(--spacing-xs); background: rgba(16, 185, 129, 0.1); border-radius: 4px;">
+                                    <span style="font-size: var(--font-size-sm); font-weight: 600;">通信・ログ</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">Priority 3</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">応答時間保証</h4>
+                            <div class="code-block" style="font-size: 0.7rem;">
+<span class="code-comment">// 割り込み応答時間計算</span>
+<span class="code-keyword">uint32_t</span> calculate_response_time(
+    interrupt_priority_t priority,
+    uint32_t execution_time_us
+) {
+    uint32_t blocking_time = <span class="code-number">0</span>;
+    
+    <span class="code-comment">// 高優先度タスクによる先占</span>
+    <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = <span class="code-number">0</span>; i < priority; i++) {
+        blocking_time += 
+            get_higher_priority_wcet(i);
+    }
+    
+    <span class="code-keyword">return</span> blocking_time + execution_time_us;
+}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- アーキテクチャの利点 -->
+            <div class="expandable-section animate-fade-in stagger-4">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>🏆 メインループ型アーキテクチャの利点</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(300px, 1fr)); gap: var(--spacing-md);">
+                        <div style="background: rgba(16, 185, 129, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--success-green);">
+                            <strong style="color: var(--success-green); display: block; margin-bottom: var(--spacing-sm);">✅ 実時間性保証</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 決定論的実行時間（WCET保証）</li>
+                                <li>• 周期実行の厳密なタイミング制御</li>
+                                <li>• 割り込み応答時間の予測可能性</li>
+                                <li>• デッドロック・優先度逆転回避</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(0, 102, 204, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--primary-blue);">
+                            <strong style="color: var(--primary-blue); display: block; margin-bottom: var(--spacing-sm);">🤖 AI活用最適化</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 明確な制約条件での生成AI利用</li>
+                                <li>• アルゴリズム部分の効率化支援</li>
+                                <li>• 人間が責任を持つ部分の明確化</li>
+                                <li>• 段階的な自動化・最適化</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(99, 102, 241, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid #6366F1;">
+                            <strong style="color: #6366F1; display: block; margin-bottom: var(--spacing-sm);">🔧 保守性・拡張性</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 各フェーズが独立してテスト可能</li>
+                                <li>• 制約違反の早期発見・デバッグ</li>
+                                <li>• 新機能追加時の影響範囲限定</li>
+                                <li>• 性能プロファイリング・最適化支援</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次章への接続 -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-lg); background: linear-gradient(135deg, var(--success-green), #059669); color: white; border-radius: 16px;" class="animate-fade-in stagger-5">
+                <p style="font-size: var(--font-size-lg); opacity: 0.95;">
+                    次のスライドでは<strong>Skillsチェーンによる工程連携</strong>の<br>
+                    <strong>具体的なメカニズムと実装方法</strong>を詳説します
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 Main Loop Architecture Design Slide (16/25) Loaded');
+        });
+    </script>
+</body>
+</html>

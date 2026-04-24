@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 5: V字型開発プロセス概観 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">5 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 20%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">V字型開発プロセス概観</h1>
+            <p class="slide-subtitle">組込みシステム開発の標準的プロセスと生成AI活用ポイント</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- メインのV字プロセス図 -->
+            <div class="v-process-visual animate-fade-in">
+                <h3 style="text-align: center; margin-bottom: var(--spacing-lg); color: var(--text-dark); font-size: var(--font-size-2xl);">V字型開発プロセス</h3>
+                
+                <div class="v-shape">
+                    <!-- 左側（開発工程） -->
+                    <div class="process-steps">
+                        <div class="process-step" style="background: linear-gradient(135deg, #FEF3C7, #FDE68A); border-left: 4px solid var(--warning-yellow);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs);">
+                                <strong style="color: var(--text-dark); font-size: var(--font-size-lg);">要求分析</strong>
+                                <span style="background: var(--warning-yellow); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">Phase 1</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray);">
+                                • システム要求定義<br>
+                                • ステークホルダー要求整理<br>
+                                • 機能・非機能要求抽出
+                            </div>
+                        </div>
+                        
+                        <div class="process-step" style="background: linear-gradient(135deg, #DBEAFE, #BFDBFE); border-left: 4px solid var(--primary-blue);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs);">
+                                <strong style="color: var(--text-dark); font-size: var(--font-size-lg);">基本設計</strong>
+                                <span style="background: var(--primary-blue); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">Phase 2</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray);">
+                                • アーキテクチャ設計<br>
+                                • モジュール分割<br>
+                                • インターフェース定義
+                            </div>
+                        </div>
+                        
+                        <div class="process-step" style="background: linear-gradient(135deg, #D1FAE5, #A7F3D0); border-left: 4px solid var(--success-green);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs);">
+                                <strong style="color: var(--text-dark); font-size: var(--font-size-lg);">詳細設計</strong>
+                                <span style="background: var(--success-green); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">Phase 3</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray);">
+                                • 詳細アルゴリズム設計<br>
+                                • データ構造定義<br>
+                                • API仕様決定
+                            </div>
+                        </div>
+                        
+                        <div class="process-step" style="background: linear-gradient(135deg, #FED7AA, #FDBA74); border-left: 4px solid var(--accent-orange); box-shadow: 0 8px 24px rgba(255, 107, 53, 0.2);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs);">
+                                <strong style="color: var(--text-dark); font-size: var(--font-size-lg);">実装</strong>
+                                <span style="background: var(--accent-orange); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">Phase 4</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray);">
+                                • コーディング<br>
+                                • コードレビュー<br>
+                                • 静的解析・デバッグ
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 中央のV字 -->
+                    <div class="v-center">
+                        <div class="v-symbol animate-float" style="background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: white; width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(0,102,204,0.3);">V</div>
+                        <div style="writing-mode: vertical-rl; text-align: center; color: var(--medium-gray); font-weight: 600; font-size: var(--font-size-sm); margin-top: var(--spacing-sm);">
+                            字型プロセス
+                        </div>
+                    </div>
+
+                    <!-- 右側（テスト工程） -->
+                    <div class="process-steps">
+                        <div class="process-step" style="background: linear-gradient(135deg, #FEE2E2, #FECACA); border-left: 4px solid var(--warning-red);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs);">
+                                <strong style="color: var(--text-dark); font-size: var(--font-size-lg);">受入テスト</strong>
+                                <span style="background: var(--warning-red); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">Phase 8</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray);">
+                                • ユーザー受入テスト<br>
+                                • システム検収<br>
+                                • 運用テスト
+                            </div>
+                        </div>
+                        
+                        <div class="process-step" style="background: linear-gradient(135deg, #F3E8FF, #E9D5FF); border-left: 4px solid #8B5CF6;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs);">
+                                <strong style="color: var(--text-dark); font-size: var(--font-size-lg);">システムテスト</strong>
+                                <span style="background: #8B5CF6; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">Phase 7</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray);">
+                                • E2Eテスト<br>
+                                • 性能・負荷テスト<br>
+                                • セキュリティテスト
+                            </div>
+                        </div>
+                        
+                        <div class="process-step" style="background: linear-gradient(135deg, #E0F2FE, #BAE6FD); border-left: 4px solid #0EA5E9;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs);">
+                                <strong style="color: var(--text-dark); font-size: var(--font-size-lg);">統合テスト</strong>
+                                <span style="background: #0EA5E9; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">Phase 6</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray);">
+                                • モジュール間結合テスト<br>
+                                • インターフェーステスト<br>
+                                • 依存関係検証
+                            </div>
+                        </div>
+                        
+                        <div class="process-step" style="background: linear-gradient(135deg, #ECFDF5, #D1FAE5); border-left: 4px solid #22C55E;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs);">
+                                <strong style="color: var(--text-dark); font-size: var(--font-size-lg);">単体テスト</strong>
+                                <span style="background: #22C55E; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600;">Phase 5</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray);">
+                                • 個別関数テスト<br>
+                                • 境界値テスト<br>
+                                • カバレッジ測定
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 特徴説明 -->
+            <div class="content-grid two-col animate-fade-in stagger-1" style="margin-top: var(--spacing-xl);">
+                <div class="content-card" style="border-left: 4px solid var(--primary-blue);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--primary-blue);">⚙️</div>
+                        <div class="card-title">V字型プロセスの特徴</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="styled-list">
+                            <li><strong>段階的詳細化</strong>: 抽象から具象へのトップダウン設計</li>
+                            <li><strong>検証とのトレーサビリティ</strong>: 各設計工程に対応するテスト工程</li>
+                            <li><strong>品質ゲート</strong>: 各工程で品質確認後に次工程へ</li>
+                            <li><strong>リスク管理</strong>: 早期での問題発見・修正メカニズム</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--accent-orange);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--accent-orange);">🤖</div>
+                        <div class="card-title">生成AI活用ポイント</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="styled-list">
+                            <li><strong>下流工程</strong>: 実装・詳細設計での高い効果期待</li>
+                            <li><strong>パターン認識</strong>: 反復的タスクでのAI能力活用</li>
+                            <li><strong>品質向上</strong>: コードレビュー・テスト生成支援</li>
+                            <li><strong>制約課題</strong>: 組込み特有制約への対応が急務</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分析の方向性 -->
+            <div class="content-card animate-fade-in stagger-2" style="background: var(--light-blue); border: 2px solid var(--primary-blue); margin-top: var(--spacing-lg);">
+                <div style="text-align: center;">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: var(--text-dark);">
+                        🔍 これから実施する分析
+                    </h3>
+                    <p style="font-size: var(--font-size-lg); line-height: 1.6; color: var(--text-dark);">
+                        V字型プロセス各工程における<strong>生成AI活用可能性</strong>を段階別に評価し、<br>
+                        組込みシステム特有の<strong>制約・課題・解決策</strong>を体系的に明らかにします
+                    </p>
+                    
+                    <div style="margin-top: var(--spacing-md); padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 8px;">
+                        <div style="font-weight: 600; color: var(--primary-blue); margin-bottom: var(--spacing-sm);">注目ポイント</div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-sm); font-size: var(--font-size-sm);">
+                            <span>✅ ハードウェア制約理解</span>
+                            <span>✅ リアルタイム制約対応</span>
+                            <span>✅ 安全性要求充足</span>
+                            <span>✅ 熟練技術者との協調</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        // Slide-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add sequential animation to process steps
+            const processSteps = document.querySelectorAll('.process-step');
+            processSteps.forEach((step, index) => {
+                step.style.opacity = '0';
+                step.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    step.style.transition = 'all 0.6s ease';
+                    step.style.opacity = '1';
+                    step.style.transform = 'translateY(0)';
+                }, index * 200 + 1000);
+            });
+            
+            // Add hover effects to process steps
+            processSteps.forEach(step => {
+                step.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-4px)';
+                    this.style.boxShadow = '0 12px 28px rgba(0,0,0,0.15)';
+                });
+                
+                step.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '';
+                });
+            });
+            
+            console.log('📄 V-shaped Process Overview Slide (5/25) Loaded');
+        });
+    </script>
+</body>
+</html>

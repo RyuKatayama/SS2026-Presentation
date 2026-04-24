@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 2: 発表概要・アジェンダ | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">2 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 8%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">発表概要・アジェンダ</h1>
+            <p class="slide-subtitle">25分間の発表構成と主要トピック</p>
+        </div>
+        
+        <div class="slide-content">
+            <div class="content-grid two-col">
+                <div class="content-card animate-fade-in">
+                    <div class="card-header">
+                        <div class="card-icon">📋</div>
+                        <div class="card-title">発表構成 (25分)</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: var(--spacing-sm); font-size: var(--font-size-lg);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) var(--spacing-md); background: var(--light-gray); border-radius: 8px; border-left: 4px solid var(--primary-blue);">
+                                <span style="font-weight: 500;">1. 背景・問題意識</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-orange); font-weight: 600;">(2分)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) var(--spacing-md); background: var(--light-gray); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                                <span style="font-weight: 500;">2. V字型プロセスの生成AI活用分析</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-orange); font-weight: 600;">(4分)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) var(--spacing-md); background: var(--light-gray); border-radius: 8px; border-left: 4px solid var(--warning-yellow);">
+                                <span style="font-weight: 500;">3. ハードウェア仮想化API設計</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-orange); font-weight: 600;">(4分)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) var(--spacing-md); background: var(--light-gray); border-radius: 8px; border-left: 4px solid var(--warning-red);">
+                                <span style="font-weight: 500;">4. メインループ型アーキテクチャ</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-orange); font-weight: 600;">(3分)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) var(--spacing-md); background: var(--light-gray); border-radius: 8px; border-left: 4px solid var(--primary-blue);">
+                                <span style="font-weight: 500;">5. GOMA実証実験結果</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-orange); font-weight: 600;">(3分)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-sm) var(--spacing-md); background: var(--light-gray); border-radius: 8px; border-left: 4px solid var(--dark-slate);">
+                                <span style="font-weight: 500;">6. 3層構造の提案とまとめ</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-orange); font-weight: 600;">(4分)</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md); background: linear-gradient(135deg, var(--accent-orange), #E55A2B); color: white; border-radius: 12px; font-weight: 600; box-shadow: 0 4px 12px rgba(255,107,53,0.3);">
+                                <span>📝 質疑応答</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700;">(5分)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card animate-fade-in stagger-1">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">🎯</div>
+                        <div class="card-title">重点アピールポイント</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: var(--spacing-md);">
+                            <div class="expandable-section">
+                                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                                    <span>📊 定量的実証</span>
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="expand-content">
+                                    <div class="expand-content-inner">
+                                        GOMA実装により<strong>5.8倍の生産性向上</strong>を定量的に実証し、学術的信頼性を確保。従来の理論的研究とは一線を画す実証的アプローチで説得力を強化。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="expandable-section">
+                                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                                    <span>🏗️ 体系的アプローチ</span>
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="expand-content">
+                                    <div class="expand-content-inner">
+                                        <strong>3層構造フレームワーク</strong>による組込みAI活用の包括的方法論を提示。設計空間・プロセス空間・V&V空間の段階的構造化により、実用性と品質保証を両立。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="expandable-section">
+                                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                                    <span>🔥 危機管理実証</span>
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="expand-content">
+                                    <div class="expand-content-inner">
+                                        <strong>107.8℃事件</strong>での想定外状況における適応的対応力を実証。理論だけでなく、実際の危機における3層構造の堅牢性を証明し、実用性を強力にアピール。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card animate-fade-in stagger-2" style="margin-top: var(--spacing-md); background: var(--light-blue); border: 2px solid var(--primary-blue);">
+                <div class="card-header">
+                    <div class="card-icon">💡</div>
+                    <div class="card-title">発表の価値提案</div>
+                </div>
+                <div style="font-size: var(--font-size-lg); line-height: 1.6; color: var(--text-dark); margin-top: var(--spacing-sm);">
+                    本発表では、組込みシステム開発における生成AI活用の実用的方法論を、
+                    <strong>理論的分析と実証実験の両面から体系的に提示</strong>します。
+                    特に<strong>GOMA実装での5.8倍の生産性向上</strong>と<strong>107.8℃事件での危機対応</strong>を通じて、
+                    提案手法の有効性を具体的に実証し、SS2026参加者の皆様に即座に活用可能な知見をお届けします。
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--spacing-lg); padding: var(--spacing-lg); background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: white; border-radius: 16px;" class="animate-fade-in stagger-3">
+                <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                    🚀 SS2026での成功をお約束します
+                </h3>
+                <p style="font-size: var(--font-size-lg); opacity: 0.95;">
+                    理論×実証×実践の三位一体で、組込み生成AI活用の新時代を切り拓く
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        // Slide-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click animation to agenda items
+            const agendaItems = document.querySelectorAll('[style*="border-left: 4px"]');
+            agendaItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.boxShadow = '0 4px 12px rgba(0,102,204,0.2)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.boxShadow = '';
+                    }, 200);
+                });
+            });
+            
+            console.log('📄 Agenda Slide (2/25) Loaded');
+        });
+    </script>
+</body>
+</html>

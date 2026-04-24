@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 14: HW仮想化API設計まとめ | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">14 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 56%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">HW仮想化API設計まとめ</h1>
+            <p class="slide-subtitle">第1層の成果と第2層への展開</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- 第1層の成果サマリー -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        🏆 第1層の主要成果
+                    </h3>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg);">
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">🏗️</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">抽象化レイヤ設計</strong>
+                        <p style="font-size: var(--font-size-sm); opacity: 0.9;">ハードウェア制約の隠蔽と構造化</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">📋</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">pre-ACD管理</strong>
+                        <p style="font-size: var(--font-size-sm); opacity: 0.9;">制約パラメータの標準化</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">✅</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">実証的検証</strong>
+                        <p style="font-size: var(--font-size-sm); opacity: 0.9;">89%の制約充足率を達成</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 技術的成果の詳細 -->
+            <div class="content-grid two-col animate-fade-in stagger-1">
+                <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">🔧</div>
+                        <div class="card-title">技術的成果</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="styled-list">
+                            <li><strong>ハードウェア制約の抽象化</strong>: 複雑な制約を生成AIが理解可能な形式に変換</li>
+                            <li><strong>pre-ACDによる管理</strong>: YAML形式での制約パラメータ標準化</li>
+                            <li><strong>制約充足保証API</strong>: 実行時制約監視・違反検出機能</li>
+                            <li><strong>WCET解析統合</strong>: 静的解析ツールとの連携実現</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--primary-blue);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--primary-blue);">📊</div>
+                        <div class="card-title">定量的効果</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: var(--spacing-sm);">
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>制約充足率向上</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">45% → 89%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>メモリ制約違反削減</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">67% → 8%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>手動確認作業削減</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">76%削減</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実装上の重要な知見 -->
+            <div class="expandable-section animate-fade-in stagger-2">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>🔍 実装における重要な知見と教訓</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+                        <div style="background: rgba(16, 185, 129, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--success-green);">
+                            <strong style="color: var(--success-green); display: block; margin-bottom: var(--spacing-sm);">✅ 成功要因</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 段階的実装アプローチ（MVP → 機能拡張）</li>
+                                <li>• 既存ツールチェーンとの親和性重視</li>
+                                <li>• 実プロジェクトでの継続的検証</li>
+                                <li>• 開発者フィードバックの積極的反映</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(245, 158, 11, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--warning-yellow);">
+                            <strong style="color: var(--warning-yellow); display: block; margin-bottom: var(--spacing-sm);">⚠️ 注意点・制約</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• pre-ACD作成に初期学習コストが発生</li>
+                                <li>• プラットフォーム固有の調整が必要</li>
+                                <li>• 複雑システムでは段階的導入が重要</li>
+                                <li>• 既存コードベースとの統合に工夫必要</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(99, 102, 241, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid #6366F1;">
+                            <strong style="color: #6366F1; display: block; margin-bottom: var(--spacing-sm);">🔮 将来展開</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• ML活用による制約パラメータ自動最適化</li>
+                                <li>• クラウドベースの制約解析サービス</li>
+                                <li>• 業界標準pre-ACDテンプレート整備</li>
+                                <li>• 開発環境統合（IDE・CI/CD連携）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 熟練技術者の手動確認作業削減 -->
+            <div class="content-card animate-fade-in stagger-3" style="background: var(--light-blue); border: 2px solid var(--primary-blue); margin-top: var(--spacing-lg);">
+                <div style="text-align: center; margin-bottom: var(--spacing-md);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--text-dark);">
+                        👨‍💻 開発プロセスへの影響
+                    </h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--spacing-lg); align-items: center;">
+                    <div>
+                        <h4 style="margin-bottom: var(--spacing-sm); color: var(--text-dark);">工数削減の内訳</h4>
+                        <div style="display: grid; gap: var(--spacing-sm);">
+                            <div style="display: flex; justify-content: space-between; font-size: var(--font-size-sm);">
+                                <span>制約確認作業</span>
+                                <span style="color: var(--success-green); font-weight: 600;">-84%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: var(--font-size-sm);">
+                                <span>デバッグ時間</span>
+                                <span style="color: var(--success-green); font-weight: 600;">-68%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: var(--font-size-sm);">
+                                <span>設計レビュー</span>
+                                <span style="color: var(--success-green); font-weight: 600;">-52%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="font-size: var(--font-size-lg); line-height: 1.6; color: var(--text-dark); margin-bottom: var(--spacing-md);">
+                            第1層の導入により、<strong>熟練技術者は制約確認の単純作業から解放</strong>され、より高度な設計判断・アーキテクチャ検討に集中できる環境を実現
+                        </p>
+                        <div style="padding: var(--spacing-md); background: rgba(16, 185, 129, 0.1); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                            <strong style="color: var(--success-green);">効果:</strong> 単純作業の自動化により、創造的タスクに<strong>76%多くの時間</strong>を投入可能
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次の第2層への橋渡し -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-xl); background: linear-gradient(135deg, var(--accent-orange), #EA580C); color: white; border-radius: 16px;" class="animate-fade-in stagger-4">
+                <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-md); color: white;">
+                    ➡️ 次ステップ: 第2層プロセス空間構造化
+                </h3>
+                <p style="font-size: var(--font-size-lg); opacity: 0.95; margin-bottom: var(--spacing-md);">
+                    設計空間を整理した上で、次は<strong>工程手順の構造化</strong>に進みます
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg);">
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">⚙️</div>
+                        <strong>Skills化</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">工程手順の形式化</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">🔗</div>
+                        <strong>3項組(I,S,O)</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">構造化文書化</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">🔄</div>
+                        <strong>メインループ型</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">実時間対応設計</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 Hardware Virtualization API Design Summary Slide (14/25) Loaded');
+        });
+    </script>
+</body>
+</html>

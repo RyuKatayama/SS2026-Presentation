@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 24: 今後の課題 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">24 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 96%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">今後の課題</h1>
+            <p class="slide-subtitle">研究限界と発展方向性 - より大規模・多様な適用に向けて</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- 課題①: 大規模システム適用性 -->
+            <div class="content-card animate-fade-in" style="margin-bottom: var(--spacing-lg);">
+                <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-md); align-items: start;">
+                    <div style="background: linear-gradient(135deg, #ef4444, #dc2626); width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.2rem;">①</div>
+                    <div>
+                        <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-md); font-size: var(--font-size-lg); font-weight: 600;">大規模システム適用性</h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md);">
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(239,68,68,0.1)); border-radius: 8px; border-left: 4px solid #ef4444;">
+                                <h4 style="color: #ef4444; margin-bottom: var(--spacing-xs); font-weight: 600;">現状</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">GOMA(中規模)での検証のみ</p>
+                            </div>
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(255,193,7,0.2), rgba(255,193,7,0.1)); border-radius: 8px; border-left: 4px solid #ffc107;">
+                                <h4 style="color: #ffc107; margin-bottom: var(--spacing-xs); font-weight: 600;">必要</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">自動車・航空機レベルでの実証</p>
+                            </div>
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.1)); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                                <h4 style="color: var(--success-green); margin-bottom: var(--spacing-xs); font-weight: 600;">対策</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">段階的スケールアップ実験</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 課題②: Skills化プロセス効率化 -->
+            <div class="content-card animate-slide-in" style="animation-delay: 0.2s; margin-bottom: var(--spacing-lg);">
+                <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-md); align-items: start;">
+                    <div style="background: linear-gradient(135deg, var(--primary-blue), #1e40af); width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.2rem;">②</div>
+                    <div>
+                        <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-md); font-size: var(--font-size-lg); font-weight: 600;">Skills化プロセス効率化</h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md);">
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(239,68,68,0.1)); border-radius: 8px; border-left: 4px solid #ef4444;">
+                                <h4 style="color: #ef4444; margin-bottom: var(--spacing-xs); font-weight: 600;">現状</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">手動でのSkills作成(高コスト)</p>
+                            </div>
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(255,193,7,0.2), rgba(255,193,7,0.1)); border-radius: 8px; border-left: 4px solid #ffc107;">
+                                <h4 style="color: #ffc107; margin-bottom: var(--spacing-xs); font-weight: 600;">必要</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">Skills自動生成・更新メカニズム</p>
+                            </div>
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.1)); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                                <h4 style="color: var(--success-green); margin-bottom: var(--spacing-xs); font-weight: 600;">対策</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">既存設計文書からの自動抽出</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 課題③: 多様ドメイン横展開 -->
+            <div class="content-card animate-slide-in" style="animation-delay: 0.4s; margin-bottom: var(--spacing-lg);">
+                <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-md); align-items: start;">
+                    <div style="background: linear-gradient(135deg, var(--accent-orange), #ea580c); width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.2rem;">③</div>
+                    <div>
+                        <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-md); font-size: var(--font-size-lg); font-weight: 600;">多様ドメイン横展開</h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md);">
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(239,68,68,0.1)); border-radius: 8px; border-left: 4px solid #ef4444;">
+                                <h4 style="color: #ef4444; margin-bottom: var(--spacing-xs); font-weight: 600;">現状</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">SESSAME手法ベースのみ</p>
+                            </div>
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(255,193,7,0.2), rgba(255,193,7,0.1)); border-radius: 8px; border-left: 4px solid #ffc107;">
+                                <h4 style="color: #ffc107; margin-bottom: var(--spacing-xs); font-weight: 600;">必要</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">他設計手法・ドメインへの適用</p>
+                            </div>
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.1)); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                                <h4 style="color: var(--success-green); margin-bottom: var(--spacing-xs); font-weight: 600;">対策</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">汎用化フレームワーク整備</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 課題④: チーム導入方法論 -->
+            <div class="content-card animate-slide-in" style="animation-delay: 0.6s; margin-bottom: var(--spacing-lg);">
+                <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-md); align-items: start;">
+                    <div style="background: linear-gradient(135deg, #9333ea, #7c3aed); width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 1.2rem;">④</div>
+                    <div>
+                        <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-md); font-size: var(--font-size-lg); font-weight: 600;">チーム導入方法論</h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md);">
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(239,68,68,0.1)); border-radius: 8px; border-left: 4px solid #ef4444;">
+                                <h4 style="color: #ef4444; margin-bottom: var(--spacing-xs); font-weight: 600;">現状</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">個人レベルでの活用</p>
+                            </div>
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(255,193,7,0.2), rgba(255,193,7,0.1)); border-radius: 8px; border-left: 4px solid #ffc107;">
+                                <h4 style="color: #ffc107; margin-bottom: var(--spacing-xs); font-weight: 600;">必要</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">組織・チーム単位での導入手順</p>
+                            </div>
+                            <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.1)); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                                <h4 style="color: var(--success-green); margin-bottom: var(--spacing-xs); font-weight: 600;">対策</h4>
+                                <p style="margin: 0; font-size: var(--font-size-sm);">段階的導入ガイドライン策定</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 発展ロードマップ -->
+            <div class="content-card hero-card animate-slide-in" style="animation-delay: 0.8s;">
+                <h3 style="color: white; text-align: center; margin-bottom: var(--spacing-lg); font-size: var(--font-size-xl); font-weight: 700;">
+                    🚀 発展ロードマップ
+                </h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg);">
+                    <div style="text-align: center; padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(0,102,204,0.3), rgba(0,102,204,0.1)); border-radius: 12px; border: 2px solid var(--primary-blue);">
+                        <div style="font-size: 2.5rem; margin-bottom: var(--spacing-md);">📈</div>
+                        <h4 style="color: var(--primary-blue); font-weight: 700; margin-bottom: var(--spacing-xs);">短期(1年)</h4>
+                        <p style="margin: 0; color: white; font-size: var(--font-size-sm); line-height: 1.5;">
+                            中規模実証拡大<br>
+                            Skills自動化プロトタイプ
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(255,107,53,0.3), rgba(255,107,53,0.1)); border-radius: 12px; border: 2px solid var(--accent-orange);">
+                        <div style="font-size: 2.5rem; margin-bottom: var(--spacing-md);">🌐</div>
+                        <h4 style="color: var(--accent-orange); font-weight: 700; margin-bottom: var(--spacing-xs);">中期(3年)</h4>
+                        <p style="margin: 0; color: white; font-size: var(--font-size-sm); line-height: 1.5;">
+                            大規模システム適用<br>
+                            多ドメイン横展開
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(16,185,129,0.3), rgba(16,185,129,0.1)); border-radius: 12px; border: 2px solid var(--success-green);">
+                        <div style="font-size: 2.5rem; margin-bottom: var(--spacing-md);">🏭</div>
+                        <h4 style="color: var(--success-green); font-weight: 700; margin-bottom: var(--spacing-xs);">長期(5年)</h4>
+                        <p style="margin: 0; color: white; font-size: var(--font-size-sm); line-height: 1.5;">
+                            業界標準化<br>
+                            完全自動化実現
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 重要メッセージ -->
+            <div class="content-card animate-slide-in" style="animation-delay: 1.0s; background: linear-gradient(135deg, rgba(147,51,234,0.3), rgba(147,51,234,0.1)); border: 2px solid #9333ea;">
+                <div style="text-align: center; padding: var(--spacing-md);">
+                    <h3 style="color: white; font-size: var(--font-size-lg); font-weight: 700; margin-bottom: var(--spacing-md);">
+                        🎯 重要な認識
+                    </h3>
+                    <p style="font-size: var(--font-size-base); color: white; margin: 0; line-height: 1.6;">
+                        今回の成果を踏まえ、<strong style="color: #a855f7;">より大規模・多様な適用</strong>に向けた<br>
+                        体系的な取り組みが今後の重要課題
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="slide-nav">
+        <button class="nav-button" onclick="previousSlide()" id="prevBtn">⬅ 前へ</button>
+        <button class="nav-button primary" onclick="nextSlide()" id="nextBtn">次へ ➡</button>
+    </div>
+
+    <script src="assets/navigation.js"></script>
+</body>
+</html>

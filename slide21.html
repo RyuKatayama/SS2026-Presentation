@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 21: 3層構造の全体像(再掲) | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">21 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 84%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">3層構造の全体像(再掲)</h1>
+            <p class="slide-subtitle">研究成果の統合提示 - 組込み生成AI活用フレームワーク</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- 3層アーキテクチャ図 -->
+            <div class="content-card hero-card animate-fade-in" style="margin-bottom: var(--spacing-lg);">
+                <h3 style="text-align: center; color: white; margin-bottom: var(--spacing-lg); font-size: var(--font-size-xl);">🏗️ 3層統合アーキテクチャ</h3>
+                
+                <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: var(--spacing-lg); font-family: 'JetBrains Mono', monospace;">
+                    <div style="border: 2px solid var(--accent-orange); border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-sm); background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(255,107,53,0.1));">
+                        <h4 style="color: var(--accent-orange); font-weight: 700; margin-bottom: var(--spacing-xs);">第3層: 熟練技術者主体V&V</h4>
+                        <ul style="color: white; margin: 0; padding-left: var(--spacing-md); font-size: var(--font-size-sm);">
+                            <li>最終判断・責任は人間が保持</li>
+                            <li>AI支援による作業効率化</li>
+                            <li>想定外状況での適応的対応</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="border: 2px solid var(--primary-blue); border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-sm); background: linear-gradient(135deg, rgba(0,102,204,0.2), rgba(0,102,204,0.1));">
+                        <h4 style="color: var(--primary-blue); font-weight: 700; margin-bottom: var(--spacing-xs);">第2層: プロセス空間構造化</h4>
+                        <ul style="color: white; margin: 0; padding-left: var(--spacing-md); font-size: var(--font-size-sm);">
+                            <li>工程手順のSkills化(I,S,O形式)</li>
+                            <li>生成AI注入可能な構造化文書</li>
+                            <li>品質ゲートによる工程間検証</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="border: 2px solid var(--success-green); border-radius: 8px; padding: var(--spacing-md); background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.1));">
+                        <h4 style="color: var(--success-green); font-weight: 700; margin-bottom: var(--spacing-xs);">第1層: 設計空間構造化</h4>
+                        <ul style="color: white; margin: 0; padding-left: var(--spacing-md); font-size: var(--font-size-sm);">
+                            <li>ハードウェア制約の抽象化</li>
+                            <li>pre-ACDによる制約パラメータ管理</li>
+                            <li>制約充足保証付きAPI設計</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 統合効果 -->
+            <div class="content-card animate-slide-in" style="animation-delay: 0.3s;">
+                <h3 style="color: var(--primary-blue); margin-bottom: var(--spacing-md); font-size: var(--font-size-lg); font-weight: 600;">🔄 統合効果</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md);">
+                    <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(0,102,204,0.1), rgba(16,185,129,0.1)); border-radius: 8px; border-left: 4px solid var(--primary-blue);">
+                        <h4 style="color: var(--primary-blue); margin-bottom: var(--spacing-xs);">🎯 体系的解決</h4>
+                        <p style="margin: 0; font-size: var(--font-size-sm);">各層が連携し、組込み特有課題を体系的に解決</p>
+                    </div>
+                    <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(255,107,53,0.1)); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                        <h4 style="color: var(--success-green); margin-bottom: var(--spacing-xs);">⚡ 両立達成</h4>
+                        <p style="margin: 0; font-size: var(--font-size-sm);">生産性向上と品質保証の両立</p>
+                    </div>
+                    <div style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(0,102,204,0.1)); border-radius: 8px; border-left: 4px solid var(--accent-orange);">
+                        <h4 style="color: var(--accent-orange); margin-bottom: var(--spacing-xs);">👥 知識継承</h4>
+                        <p style="margin: 0; font-size: var(--font-size-sm);">熟練技術者のノウハウ継承と活用</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- キーメッセージ -->
+            <div class="content-card animate-slide-in" style="animation-delay: 0.6s; background: linear-gradient(135deg, rgba(0,102,204,0.2), rgba(16,185,129,0.2)); border: 2px solid var(--primary-blue);">
+                <div style="text-align: center;">
+                    <h3 style="color: white; font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--spacing-md);">
+                        💡 核心価値
+                    </h3>
+                    <p style="font-size: var(--font-size-lg); font-weight: 500; color: white; margin: 0; line-height: 1.5;">
+                        3つの層が有機的に連携することで、<br>
+                        <strong style="color: var(--accent-orange);">組込みシステムにおける生成AI活用の課題を根本的に解決</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="slide-nav">
+        <button class="nav-button" onclick="previousSlide()" id="prevBtn">⬅ 前へ</button>
+        <button class="nav-button primary" onclick="nextSlide()" id="nextBtn">次へ ➡</button>
+    </div>
+
+    <script src="assets/navigation.js"></script>
+</body>
+</html>

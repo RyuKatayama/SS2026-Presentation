@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 3: 背景 - 組込みシステム開発の現状 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">3 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 12%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">背景 - 組込みシステム開発の現状</h1>
+            <p class="slide-subtitle">生成AI時代における組込み開発の課題と機会</p>
+        </div>
+        
+        <div class="slide-content">
+            <div class="content-grid two-col">
+                <!-- 左列: 従来の課題 -->
+                <div class="content-card animate-fade-in" style="border-left: 4px solid var(--warning-red);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--warning-red);">⚠️</div>
+                        <div class="card-title">従来の開発課題</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: var(--spacing-md);">
+                            <div class="expandable-section">
+                                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)" style="background: rgba(239, 68, 68, 0.1); border-color: var(--warning-red);">
+                                    <span>🔧 複雑化する組込みシステム</span>
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="expand-content">
+                                    <ul class="styled-list">
+                                        <li>マルチコア・異種混合プロセッサの普及</li>
+                                        <li>IoT・エッジコンピューティングの要求増大</li>
+                                        <li>機能安全規格(ISO 26262等)への対応</li>
+                                        <li>リアルタイム性とセキュリティの両立</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="expandable-section">
+                                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)" style="background: rgba(239, 68, 68, 0.1); border-color: var(--warning-red);">
+                                    <span>💰 開発コストとスケジュール圧迫</span>
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="expand-content">
+                                    <ul class="styled-list">
+                                        <li>開発期間の短縮要求 (18ヶ月 → 12ヶ月)</li>
+                                        <li>品質要求の高度化 (安全性・信頼性)</li>
+                                        <li>デバッグ・検証工数の肥大化</li>
+                                        <li>ハードウェア制約による設計制限</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="expandable-section">
+                                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)" style="background: rgba(239, 68, 68, 0.1); border-color: var(--warning-red);">
+                                    <span>👨‍🏫 熟練技術者の知見継承問題</span>
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="expand-content">
+                                    <ul class="styled-list">
+                                        <li>ベテランエンジニアの退職・世代交代</li>
+                                        <li>暗黙知・属人的ノウハウの散逸</li>
+                                        <li>若手エンジニアの育成期間不足</li>
+                                        <li>複雑システムの全体設計能力不足</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右列: 生成AI普及による変化 -->
+                <div class="content-card animate-fade-in stagger-1" style="border-left: 4px solid var(--success-green);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">🚀</div>
+                        <div class="card-title">生成AI普及による変化</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: var(--spacing-md);">
+                            <div class="expandable-section">
+                                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)" style="background: rgba(16, 185, 129, 0.1); border-color: var(--success-green);">
+                                    <span>🤖 ChatGPT・Claude等の技術進歩</span>
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="expand-content">
+                                    <ul class="styled-list">
+                                        <li>大規模言語モデル(LLM)の急速な性能向上</li>
+                                        <li>自然言語からコード生成の実用化</li>
+                                        <li>複雑なアルゴリズム実装の自動化</li>
+                                        <li>多言語・多ドメインでの汎用性</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="expandable-section">
+                                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)" style="background: rgba(16, 185, 129, 0.1); border-color: var(--success-green);">
+                                    <span>⚡ コード生成・レビュー支援の実用化</span>
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="expand-content">
+                                    <ul class="styled-list">
+                                        <li>GitHub Copilot等の開発環境統合</li>
+                                        <li>単体テストケース自動生成</li>
+                                        <li>コードレビュー・リファクタリング支援</li>
+                                        <li>ドキュメント生成・API仕様作成</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="expandable-section">
+                                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)" style="background: rgba(245, 158, 11, 0.1); border-color: var(--warning-yellow);">
+                                    <span>❓ しかし組込み特有課題は未解決</span>
+                                    <span class="expand-icon">▼</span>
+                                </button>
+                                <div class="expand-content">
+                                    <ul class="styled-list">
+                                        <li><strong>ハードウェア制約理解の限界</strong></li>
+                                        <li><strong>リアルタイム制約への配慮不足</strong></li>
+                                        <li><strong>安全性要求・WCET解析との乖離</strong></li>
+                                        <li><strong>組込み特有設計パターンの理解不足</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 問題認識の統合 -->
+            <div class="content-card animate-fade-in stagger-2" style="background: var(--light-blue); border: 2px solid var(--primary-blue); margin-top: var(--spacing-lg);">
+                <div class="card-header">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">現状認識: 生成AI活用の遅れ</div>
+                </div>
+                <div style="font-size: var(--font-size-lg); line-height: 1.6; color: var(--text-dark); margin-top: var(--spacing-sm);">
+                    <p style="margin-bottom: var(--spacing-sm);">
+                        <strong>Webアプリケーション開発</strong>等では生成AIによる開発効率向上が顕著に現れているが、
+                        <strong>組込みシステム開発分野</strong>では以下の理由により活用が大幅に遅れている:
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md); margin: var(--spacing-md) 0;">
+                        <div style="background: rgba(239, 68, 68, 0.1); padding: var(--spacing-md); border-radius: 8px; border-left: 4px solid var(--warning-red);">
+                            <strong>技術的課題</strong><br>
+                            ハードウェア制約・実時間制約への対応困難
+                        </div>
+                        <div style="background: rgba(239, 68, 68, 0.1); padding: var(--spacing-md); border-radius: 8px; border-left: 4px solid var(--warning-red);">
+                            <strong>品質保証</strong><br>
+                            生成コードの安全性・信頼性検証方法論の欠如
+                        </div>
+                        <div style="background: rgba(239, 68, 68, 0.1); padding: var(--spacing-md); border-radius: 8px; border-left: 4px solid var(--warning-red);">
+                            <strong>責任境界</strong><br>
+                            AI支援と熟練技術者判断の適切な分担方法不明
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: var(--font-size-xl); font-weight: 600; color: var(--primary-blue); text-align: center; margin-top: var(--spacing-md);">
+                        → 組込み特有の課題に対応した<strong>体系的なAI活用方法論</strong>が急務
+                    </p>
+                </div>
+            </div>
+
+            <!-- 統計情報 -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg);" class="animate-fade-in stagger-3">
+                <div class="metric-card" style="background: linear-gradient(135deg, var(--warning-red), #C53030);">
+                    <div class="metric-number">73%</div>
+                    <div class="metric-label">Web開発での活用率</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, var(--warning-yellow), #D69E2E);">
+                    <div class="metric-number">23%</div>
+                    <div class="metric-label">組込み開発での活用率</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));">
+                    <div class="metric-number">3.2×</div>
+                    <div class="metric-label">活用格差倍率</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        // Slide-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate metric numbers
+            const metricNumbers = document.querySelectorAll('.metric-number');
+            setTimeout(() => {
+                metricNumbers.forEach((num, index) => {
+                    const text = num.textContent;
+                    const isPercent = text.includes('%');
+                    const isMultiple = text.includes('×');
+                    
+                    if (isPercent) {
+                        const target = parseInt(text);
+                        window.navigation.countUpAnimation(num, target, 2000);
+                        setTimeout(() => {
+                            num.textContent = target + '%';
+                        }, 2000);
+                    }
+                });
+            }, 1000);
+            
+            console.log('📄 Background Slide (3/25) Loaded');
+        });
+    </script>
+</body>
+</html>

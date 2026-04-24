@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 7: 現状の生成AI活用における課題 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">7 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 28%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">現状の生成AI活用における課題</h1>
+            <p class="slide-subtitle">組込みシステム開発で解決すべき3つの主要課題</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- 課題概要 -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        ⚠️ 生成AI活用の阻害要因
+                    </h3>
+                </div>
+                <div style="font-size: var(--font-size-lg); line-height: 1.6; text-align: center; background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 12px;">
+                    Web開発では既に実用化が進む生成AIも、<br>
+                    組込みシステム開発では<strong style="color: var(--accent-orange);">3つの根本的課題</strong>により<br>
+                    活用が大幅に阻害されている
+                </div>
+            </div>
+
+            <!-- 3つの主要課題 -->
+            <div style="display: grid; gap: var(--spacing-xl); margin-top: var(--spacing-xl);">
+                <!-- 課題1: ハードウェア制約の理解不足 -->
+                <div class="content-card animate-fade-in stagger-1" style="border-left: 6px solid var(--warning-red);">
+                    <div class="card-header">
+                        <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                            <div style="background: var(--warning-red); color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xl); font-weight: 700; flex-shrink: 0;">1</div>
+                            <div>
+                                <div style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--text-dark); margin-bottom: var(--spacing-xs);">ハードウェア制約の理解不足</div>
+                                <div style="color: var(--medium-gray); font-size: var(--font-size-lg);">Hardware Constraint Understanding Deficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expandable-section" style="margin-top: var(--spacing-md);">
+                        <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)" style="background: rgba(239, 68, 68, 0.1); border-color: var(--warning-red);">
+                            <span>🔧 具体的な制約理解の限界</span>
+                            <span class="expand-icon">▼</span>
+                        </button>
+                        <div class="expand-content">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+                                <div>
+                                    <strong style="color: var(--warning-red); margin-bottom: var(--spacing-sm); display: block;">💾 メモリ・CPU能力の制限</strong>
+                                    <ul class="styled-list">
+                                        <li>RAM 32KB〜512KB の極限環境</li>
+                                        <li>ROM容量制約下での最適化要求</li>
+                                        <li>低電力・低クロック制約</li>
+                                        <li>DMAバス帯域制限</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--warning-red); margin-bottom: var(--spacing-sm); display: block;">⏱️ リアルタイム制約への配慮欠如</strong>
+                                    <ul class="styled-list">
+                                        <li>WCET（最悪実行時間）保証困難</li>
+                                        <li>割り込み応答時間の考慮不足</li>
+                                        <li>周期実行タイミング制約無視</li>
+                                        <li>優先度逆転問題の未対応</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 課題2: 品質保証責任の曖昧化 -->
+                <div class="content-card animate-fade-in stagger-2" style="border-left: 6px solid var(--warning-yellow);">
+                    <div class="card-header">
+                        <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                            <div style="background: var(--warning-yellow); color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xl); font-weight: 700; flex-shrink: 0;">2</div>
+                            <div>
+                                <div style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--text-dark); margin-bottom: var(--spacing-xs);">品質保証責任の曖昧化</div>
+                                <div style="color: var(--medium-gray); font-size: var(--font-size-lg);">Quality Assurance Responsibility Ambiguity</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expandable-section" style="margin-top: var(--spacing-md);">
+                        <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)" style="background: rgba(245, 158, 11, 0.1); border-color: var(--warning-yellow);">
+                            <span>📋 責任境界の不明確性</span>
+                            <span class="expand-icon">▼</span>
+                        </button>
+                        <div class="expand-content">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+                                <div>
+                                    <strong style="color: var(--warning-yellow); margin-bottom: var(--spacing-sm); display: block;">⚖️ WCET解析との整合性</strong>
+                                    <ul class="styled-list">
+                                        <li>生成コードのWCET計算困難</li>
+                                        <li>静的解析ツールとの非互換</li>
+                                        <li>最適化コードの予測不能性</li>
+                                        <li>安全性解析との乖離</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--warning-yellow); margin-bottom: var(--spacing-sm); display: block;">🛡️ 安全性要求への対応</strong>
+                                    <ul class="styled-list">
+                                        <li>ISO 26262等の機能安全要求</li>
+                                        <li>故障モード分析の困難</li>
+                                        <li>冗長化設計の理解不足</li>
+                                        <li>フェールセーフ機構の欠如</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 課題3: 設計空間の構造化不足 -->
+                <div class="content-card animate-fade-in stagger-3" style="border-left: 6px solid var(--dark-slate);">
+                    <div class="card-header">
+                        <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                            <div style="background: var(--dark-slate); color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: var(--font-size-xl); font-weight: 700; flex-shrink: 0;">3</div>
+                            <div>
+                                <div style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--text-dark); margin-bottom: var(--spacing-xs);">設計空間の構造化不足</div>
+                                <div style="color: var(--medium-gray); font-size: var(--font-size-lg);">Design Space Structuring Deficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expandable-section" style="margin-top: var(--spacing-md);">
+                        <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)" style="background: rgba(30, 41, 59, 0.1); border-color: var(--dark-slate);">
+                            <span>🗺️ 設計選択肢の整理不備</span>
+                            <span class="expand-icon">▼</span>
+                        </button>
+                        <div class="expand-content">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+                                <div>
+                                    <strong style="color: var(--dark-slate); margin-bottom: var(--spacing-sm); display: block;">📊 制約条件の事前整理不備</strong>
+                                    <ul class="styled-list">
+                                        <li>ハードウェア仕様の体系化欠如</li>
+                                        <li>性能要求の定量化不足</li>
+                                        <li>電力制約の明示不備</li>
+                                        <li>コスト制約との整合性課題</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong style="color: var(--dark-slate); margin-bottom: var(--spacing-sm); display: block;">🔄 段階的詳細化の枠組み欠如</strong>
+                                    <ul class="styled-list">
+                                        <li>抽象レベル管理の困難</li>
+                                        <li>詳細化ステップの標準化不足</li>
+                                        <li>中間成果物の品質基準欠如</li>
+                                        <li>トレーサビリティ確保の困難</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 課題の影響と解決の必要性 -->
+            <div class="content-card animate-fade-in stagger-4" style="background: var(--light-gray); border: 2px solid var(--primary-blue); margin-top: var(--spacing-xl);">
+                <div style="text-align: center;">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-md); color: var(--text-dark);">
+                        💥 課題の影響・被害
+                    </h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-lg); margin: var(--spacing-lg) 0;">
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--warning-red), #C53030);">
+                            <div class="metric-number">67%</div>
+                            <div class="metric-label">メモリ制約違反率</div>
+                        </div>
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--warning-yellow), #D69E2E);">
+                            <div class="metric-number">±40%</div>
+                            <div class="metric-label">実行時間予測誤差</div>
+                        </div>
+                        <div class="metric-card" style="background: linear-gradient(135deg, var(--dark-slate), #374151);">
+                            <div class="metric-number">45%</div>
+                            <div class="metric-label">コンパイル成功率</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: var(--spacing-lg); padding: var(--spacing-lg); background: rgba(239, 68, 68, 0.1); border-radius: 12px; border-left: 4px solid var(--warning-red);">
+                        <p style="font-size: var(--font-size-lg); font-weight: 600; color: var(--text-dark); margin-bottom: var(--spacing-sm);">
+                            ⚠️ 現状では生成AIコードの<strong>大半が実用不可能</strong>
+                        </p>
+                        <p style="color: var(--medium-gray);">
+                            上記課題により、生成されたコードの67%がメモリ制約に違反し、<br>
+                            コンパイルできるコードでも実行時間予測の大幅な誤差で実用に耐えない状況
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 解決策へのブリッジ -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-xl); background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: white; border-radius: 16px;" class="animate-fade-in stagger-5">
+                <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-md); color: white;">
+                    🚀 解決策: 3層構造アプローチ
+                </h3>
+                <p style="font-size: var(--font-size-lg); opacity: 0.95; margin-bottom: var(--spacing-md);">
+                    これらの根本的課題を解決するため、<br>
+                    <strong>設計空間・プロセス空間・V&V空間</strong>の<strong>3層構造</strong>による<br>
+                    段階的アプローチを提案します
+                </p>
+                
+                <div style="margin-top: var(--spacing-lg); padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 8px;">
+                    <div style="font-weight: 600; margin-bottom: var(--spacing-sm);">次章以降で詳説</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--spacing-sm); font-size: var(--font-size-sm);">
+                        <span>📊 第1層: HW仮想化API</span>
+                        <span>⚙️ 第2層: Skills化</span>
+                        <span>🔬 第3層: 熟練技術者主体V&V</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        // Slide-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add progressive reveal for challenge cards
+            const challengeCards = document.querySelectorAll('.content-card[style*="border-left: 6px"]');
+            challengeCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateX(-30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.8s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateX(0)';
+                }, index * 600 + 1000);
+            });
+            
+            // Animate metric numbers with count up
+            setTimeout(() => {
+                const metricNumbers = document.querySelectorAll('.metric-number');
+                metricNumbers.forEach((num, index) => {
+                    const text = num.textContent;
+                    const hasPercent = text.includes('%');
+                    const hasPlus = text.includes('±');
+                    
+                    if (hasPercent) {
+                        const target = parseInt(text);
+                        window.navigation.countUpAnimation(num, target, 2000);
+                        setTimeout(() => {
+                            num.textContent = target + '%';
+                        }, 2000);
+                    }
+                });
+            }, 3000);
+            
+            console.log('📄 Current Challenges Slide (7/25) Loaded');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 23: 研究成果まとめ(表6相当) | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">23 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 92%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">研究成果まとめ(表6相当)</h1>
+            <p class="slide-subtitle">全体成果の集約提示 - 3層構造フレームワークの定量的効果</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- 成果一覧表 -->
+            <div class="content-card animate-fade-in" style="margin-bottom: var(--spacing-lg);">
+                <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: var(--spacing-lg); font-size: var(--font-size-xl); font-weight: 700;">
+                    📊 層別成果詳細
+                </h3>
+                
+                <!-- テーブル形式の成果表示 -->
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;">
+                        <thead>
+                            <tr style="background: linear-gradient(135deg, var(--primary-blue), rgba(0,102,204,0.8));">
+                                <th style="padding: var(--spacing-md); color: white; font-weight: 600; text-align: left; border-right: 1px solid rgba(255,255,255,0.2);">層</th>
+                                <th style="padding: var(--spacing-md); color: white; font-weight: 600; text-align: left; border-right: 1px solid rgba(255,255,255,0.2);">成果</th>
+                                <th style="padding: var(--spacing-md); color: white; font-weight: 600; text-align: left; border-right: 1px solid rgba(255,255,255,0.2);">効果</th>
+                                <th style="padding: var(--spacing-md); color: white; font-weight: 600; text-align: left;">評価指標</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 第1層 -->
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td rowspan="2" style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(16,185,129,0.1)); color: var(--success-green); font-weight: 600; vertical-align: middle; border-right: 1px solid rgba(255,255,255,0.2);"><strong>第1層</strong></td>
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">HW仮想化API</td>
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">制約充足コード生成</td>
+                                <td style="padding: var(--spacing-md); color: var(--success-green); font-weight: 700;">成功率 45% → 89%</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">pre-ACD</td>
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">設計パラメータ管理</td>
+                                <td style="padding: var(--spacing-md); color: var(--success-green); font-weight: 700;">メモリ違反 67% → 8%</td>
+                            </tr>
+                            
+                            <!-- 第2層 -->
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td rowspan="2" style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(0,102,204,0.2), rgba(0,102,204,0.1)); color: var(--primary-blue); font-weight: 600; vertical-align: middle; border-right: 1px solid rgba(255,255,255,0.2);"><strong>第2層</strong></td>
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">Skills化(19個)</td>
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">工程手順の構造化</td>
+                                <td style="padding: var(--spacing-md); color: var(--primary-blue); font-weight: 700;">開発期間 25.6%短縮</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">3項組(I,S,O)</td>
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">品質ゲート標準化</td>
+                                <td style="padding: var(--spacing-md); color: var(--primary-blue); font-weight: 700;">バグ 31.5%削減</td>
+                            </tr>
+                            
+                            <!-- 第3層 -->
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td rowspan="2" style="padding: var(--spacing-md); background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(255,107,53,0.1)); color: var(--accent-orange); font-weight: 600; vertical-align: middle; border-right: 1px solid rgba(255,255,255,0.2);"><strong>第3層</strong></td>
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">熟練技術者主体V&V</td>
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">責任境界の明確化</td>
+                                <td style="padding: var(--spacing-md); color: var(--accent-orange); font-weight: 700;">品質保証維持</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">適応的制御</td>
+                                <td style="padding: var(--spacing-md); color: var(--dark-slate); background: rgba(255,255,255,0.9); border-right: 1px solid rgba(255,255,255,0.2);">想定外状況対応</td>
+                                <td style="padding: var(--spacing-md); color: var(--accent-orange); font-weight: 700;">107.8℃事件対処</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 総合効果（インパクト数値） -->
+            <div class="content-card hero-card animate-slide-in" style="animation-delay: 0.3s;">
+                <h3 style="text-align: center; color: white; margin-bottom: var(--spacing-lg); font-size: var(--font-size-xl); font-weight: 700;">
+                    🎯 総合効果
+                </h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg);">
+                    <div style="text-align: center; padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(16,185,129,0.3), rgba(16,185,129,0.1)); border-radius: 12px; border: 2px solid var(--success-green);">
+                        <div style="font-size: 3rem; margin-bottom: var(--spacing-xs);">⚡</div>
+                        <h4 style="color: var(--success-green); font-weight: 700; margin-bottom: var(--spacing-xs);">開発効率</h4>
+                        <p style="font-size: 2rem; font-weight: 800; color: white; margin: 0;">25.6%</p>
+                        <p style="color: var(--success-green); margin: 0; font-size: var(--font-size-sm);">期間短縮達成</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(0,102,204,0.3), rgba(0,102,204,0.1)); border-radius: 12px; border: 2px solid var(--primary-blue);">
+                        <div style="font-size: 3rem; margin-bottom: var(--spacing-xs);">🛡️</div>
+                        <h4 style="color: var(--primary-blue); font-weight: 700; margin-bottom: var(--spacing-xs);">品質向上</h4>
+                        <p style="font-size: 2rem; font-weight: 800; color: white; margin: 0;">31.5%</p>
+                        <p style="color: var(--primary-blue); margin: 0; font-size: var(--font-size-sm);">バグ削減実現</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(255,107,53,0.3), rgba(255,107,53,0.1)); border-radius: 12px; border: 2px solid var(--accent-orange);">
+                        <div style="font-size: 3rem; margin-bottom: var(--spacing-xs);">⏱️</div>
+                        <h4 style="color: var(--accent-orange); font-weight: 700; margin-bottom: var(--spacing-xs);">実時間性</h4>
+                        <p style="font-size: 2rem; font-weight: 800; color: white; margin: 0;">98.7%</p>
+                        <p style="color: var(--accent-orange); margin: 0; font-size: var(--font-size-sm);">制約充足維持</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(147,51,234,0.3), rgba(147,51,234,0.1)); border-radius: 12px; border: 2px solid #9333ea;">
+                        <div style="font-size: 3rem; margin-bottom: var(--spacing-xs);">🚀</div>
+                        <h4 style="color: #9333ea; font-weight: 700; margin-bottom: var(--spacing-xs);">堅牢性</h4>
+                        <p style="font-size: 1.5rem; font-weight: 800; color: white; margin: 0;">想定外対応</p>
+                        <p style="color: #9333ea; margin: 0; font-size: var(--font-size-sm);">継続動作実証</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 結論メッセージ -->
+            <div class="content-card animate-slide-in" style="animation-delay: 0.6s; background: linear-gradient(135deg, rgba(0,102,204,0.3), rgba(16,185,129,0.3)); border: 3px solid var(--primary-blue);">
+                <div style="text-align: center; padding: var(--spacing-md);">
+                    <h3 style="color: white; font-size: var(--font-size-2xl); font-weight: 800; margin-bottom: var(--spacing-md);">
+                        ✅ 実証完了
+                    </h3>
+                    <p style="font-size: var(--font-size-lg); font-weight: 600; color: white; margin: 0; line-height: 1.6;">
+                        <strong style="color: var(--accent-orange);">3層すべてで定量的効果を確認</strong><br>
+                        組込みシステムにおける生成AI活用の<br>
+                        <span style="color: var(--success-green);">実現可能性を完全実証</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="slide-nav">
+        <button class="nav-button" onclick="previousSlide()" id="prevBtn">⬅ 前へ</button>
+        <button class="nav-button primary" onclick="nextSlide()" id="nextBtn">次へ ➡</button>
+    </div>
+
+    <script src="assets/navigation.js"></script>
+</body>
+</html>

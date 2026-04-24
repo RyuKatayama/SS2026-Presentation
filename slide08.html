@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 8: 提案する3層構造フレームワーク ⭐ | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">8 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 32%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">提案する3層構造フレームワーク ⭐</h1>
+            <p class="slide-subtitle">組込み特有課題に対する段階的解決アプローチ</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- 3層構造の全体像 -->
+            <div class="layer-framework animate-fade-in">
+                <h3 style="text-align: center; margin-bottom: var(--spacing-lg); color: var(--text-dark); font-size: var(--font-size-2xl);">3層構造アーキテクチャ</h3>
+                
+                <!-- Layer 3 -->
+                <div class="framework-layer layer-3" onclick="toggleLayerDetails(this, 3)">
+                    <div class="layer-header">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+                                <div class="layer-number">3</div>
+                                <div>
+                                    <h4 style="font-size: var(--font-size-xl); font-weight: 700; color: var(--text-dark); margin: 0;">第3層: 熟練技術者主体V&V</h4>
+                                    <div style="color: var(--medium-gray); font-size: var(--font-size-sm);">Expert-led Verification & Validation</div>
+                                </div>
+                            </div>
+                            <div style="font-size: var(--font-size-lg); color: var(--medium-gray);">
+                                <strong style="color: var(--primary-blue);">責任と判断</strong> - 最終品質保証・危機対応・工学的責任の担保
+                            </div>
+                        </div>
+                        <div style="font-size: 2rem; transition: transform 0.3s ease;" class="layer-expand-icon">🔬</div>
+                    </div>
+                    <div class="layer-details" style="display: none; margin-top: var(--spacing-md); padding-top: var(--spacing-md); border-top: 1px solid rgba(0,102,204,0.2);">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md);">
+                            <div>
+                                <strong style="color: var(--primary-blue); display: block; margin-bottom: var(--spacing-xs);">🎯 主要責任</strong>
+                                <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                    <li>• 最終的な品質判断</li>
+                                    <li>• 安全性要求の確認</li>
+                                    <li>• 想定外状況への対応</li>
+                                    <li>• 工学的責任の担保</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong style="color: var(--primary-blue); display: block; margin-bottom: var(--spacing-xs);">🤖 AI活用方針</strong>
+                                <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                    <li>• 作業効率化ツールとして活用</li>
+                                    <li>• 人間の判断を補助・支援</li>
+                                    <li>• 最終決定は熟練技術者が実施</li>
+                                    <li>• トレーサビリティ確保</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layer 2 -->
+                <div class="framework-layer layer-2" onclick="toggleLayerDetails(this, 2)">
+                    <div class="layer-header">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+                                <div class="layer-number">2</div>
+                                <div>
+                                    <h4 style="font-size: var(--font-size-xl); font-weight: 700; color: var(--text-dark); margin: 0;">第2層: プロセス空間構造化</h4>
+                                    <div style="color: var(--medium-gray); font-size: var(--font-size-sm);">Process Space Structuring</div>
+                                </div>
+                            </div>
+                            <div style="font-size: var(--font-size-lg); color: var(--medium-gray);">
+                                <strong style="color: var(--accent-orange);">Skills化</strong> - 工程手順の形式化・構造化・注入可能化
+                            </div>
+                        </div>
+                        <div style="font-size: 2rem; transition: transform 0.3s ease;" class="layer-expand-icon">⚙️</div>
+                    </div>
+                    <div class="layer-details" style="display: none; margin-top: var(--spacing-md); padding-top: var(--spacing-md); border-top: 1px solid rgba(255,107,53,0.2);">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md);">
+                            <div>
+                                <strong style="color: var(--accent-orange); display: block; margin-bottom: var(--spacing-xs);">📋 3項組(I,S,O)形式化</strong>
+                                <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                    <li>• Input: 前工程成果物+制約</li>
+                                    <li>• Steps: 実行手順+判断基準</li>
+                                    <li>• Output: 次工程成果物+検証</li>
+                                    <li>• 品質ゲートの標準化</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong style="color: var(--accent-orange); display: block; margin-bottom: var(--spacing-xs);">🔗 Skills連携</strong>
+                                <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                    <li>• 工程間の成果物受渡標準化</li>
+                                    <li>• 熟練ノウハウの構造化</li>
+                                    <li>• 生成AI注入形式の確立</li>
+                                    <li>• トレーサビリティ維持</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layer 1 -->
+                <div class="framework-layer layer-1" onclick="toggleLayerDetails(this, 1)">
+                    <div class="layer-header">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: var(--spacing-md); margin-bottom: var(--spacing-sm);">
+                                <div class="layer-number">1</div>
+                                <div>
+                                    <h4 style="font-size: var(--font-size-xl); font-weight: 700; color: var(--text-dark); margin: 0;">第1層: 設計空間構造化</h4>
+                                    <div style="color: var(--medium-gray); font-size: var(--font-size-sm);">Design Space Structuring</div>
+                                </div>
+                            </div>
+                            <div style="font-size: var(--font-size-lg); color: var(--medium-gray);">
+                                <strong style="color: var(--dark-slate);">HW仮想化API</strong> - ハードウェア制約の抽象化・事前構造化
+                            </div>
+                        </div>
+                        <div style="font-size: 2rem; transition: transform 0.3s ease;" class="layer-expand-icon">🏗️</div>
+                    </div>
+                    <div class="layer-details" style="display: none; margin-top: var(--spacing-md); padding-top: var(--spacing-md); border-top: 1px solid rgba(30,41,59,0.2);">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md);">
+                            <div>
+                                <strong style="color: var(--dark-slate); display: block; margin-bottom: var(--spacing-xs);">🖥️ HW制約抽象化</strong>
+                                <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                    <li>• メモリ・CPU制限の隠蔽</li>
+                                    <li>• リアルタイム制約の抽象化</li>
+                                    <li>• ペリフェラル依存性の管理</li>
+                                    <li>• 電力制約の考慮</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong style="color: var(--dark-slate); display: block; margin-bottom: var(--spacing-xs);">📊 pre-ACD管理</strong>
+                                <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                    <li>• 制約パラメータの構造化</li>
+                                    <li>• 設計空間の事前定義</li>
+                                    <li>• 制約充足保証API</li>
+                                    <li>• 生成AI向け制約注入</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- フレームワークの統合効果 -->
+            <div class="content-grid two-col animate-fade-in stagger-1" style="margin-top: var(--spacing-xl);">
+                <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">💡</div>
+                        <div class="card-title">フレームワークの統合効果</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="styled-list">
+                            <li><strong>段階的課題解決</strong>: 3つの層で課題を分離・個別対応</li>
+                            <li><strong>責任境界明確化</strong>: AI支援範囲と人間判断領域の明確化</li>
+                            <li><strong>品質保証維持</strong>: 各層での検証・確認メカニズム</li>
+                            <li><strong>知見継承支援</strong>: 熟練ノウハウの構造化・外部化</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--primary-blue);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--primary-blue);">🎯</div>
+                        <div class="card-title">期待される改善効果</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: var(--spacing-sm);">
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>制約充足率</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">45% → 89%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>開発期間短縮</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">25.6%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>バグ削減</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">31.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実装フェーズ -->
+            <div class="expandable-section animate-fade-in stagger-2" style="margin-top: var(--spacing-lg);">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>🚀 3層構造の実装アプローチ</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+                        <div style="background: rgba(30,41,59,0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--dark-slate);">
+                            <strong style="color: var(--dark-slate); margin-bottom: var(--spacing-sm); display: block;">Phase 1: 基盤整備 (1-3ヶ月)</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• HW仮想化APIの設計・実装</li>
+                                <li>• pre-ACD形式の標準化</li>
+                                <li>• 制約管理システムの構築</li>
+                                <li>• 基本的な検証環境整備</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255,107,53,0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--accent-orange);">
+                            <strong style="color: var(--accent-orange); margin-bottom: var(--spacing-sm); display: block;">Phase 2: Skills化 (3-6ヶ月)</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 主要工程のSkills化実装</li>
+                                <li>• 3項組(I,S,O)テンプレート作成</li>
+                                <li>• 品質ゲートの標準化</li>
+                                <li>• ツールチェーン統合</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(0,102,204,0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--primary-blue);">
+                            <strong style="color: var(--primary-blue); margin-bottom: var(--spacing-sm); display: block;">Phase 3: 統合運用 (6-12ヶ月)</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 3層構造の統合テスト</li>
+                                <li>• 熟練技術者教育・訓練</li>
+                                <li>• 運用手順の確立</li>
+                                <li>• 効果測定・改善サイクル</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次章への接続 -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-xl); background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: white; border-radius: 16px;" class="animate-fade-in stagger-3">
+                <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-md); color: white;">
+                    📚 詳細説明の構成
+                </h3>
+                <p style="font-size: var(--font-size-lg); opacity: 0.95; margin-bottom: var(--spacing-md);">
+                    次章から各層の具体的な設計手法・実装方法・効果検証を詳説します
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg);">
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">🏗️</div>
+                        <strong>第1層詳細</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">スライド 10-14</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">⚙️</div>
+                        <strong>第2層詳細</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">スライド 15-17</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">🔬</div>
+                        <strong>実証実験</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">スライド 18-20</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        // Slide-specific JavaScript for layer interaction
+        function toggleLayerDetails(layer, layerNum) {
+            const details = layer.querySelector('.layer-details');
+            const icon = layer.querySelector('.layer-expand-icon');
+            
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+                details.style.animation = 'fadeInUp 0.5s ease-out';
+                icon.style.transform = 'rotate(180deg)';
+                
+                // Add active state
+                layer.style.transform = 'translateY(-4px)';
+                layer.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+            } else {
+                details.style.display = 'none';
+                icon.style.transform = 'rotate(0deg)';
+                
+                // Remove active state
+                layer.style.transform = 'translateY(0)';
+                layer.style.boxShadow = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add sequential animation to framework layers
+            const layers = document.querySelectorAll('.framework-layer');
+            layers.forEach((layer, index) => {
+                layer.style.opacity = '0';
+                layer.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    layer.style.transition = 'all 0.8s ease';
+                    layer.style.opacity = '1';
+                    layer.style.transform = 'translateY(0)';
+                }, index * 400 + 1000);
+            });
+            
+            // Add glow effect to layer numbers
+            setTimeout(() => {
+                const layerNumbers = document.querySelectorAll('.layer-number');
+                layerNumbers.forEach((num, index) => {
+                    setTimeout(() => {
+                        num.style.animation = 'pulse 2s infinite';
+                    }, index * 600 + 2000);
+                });
+            }, 2000);
+            
+            console.log('📄 Enhanced 3-Layer Framework Slide (8/25) Loaded');
+        });
+    </script>
+</body>
+</html>

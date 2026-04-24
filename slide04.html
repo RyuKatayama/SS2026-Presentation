@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 4: 研究目的・貢献 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">4 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 16%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">研究目的・貢献</h1>
+            <p class="slide-subtitle">組込みAI活用の体系的方法論の確立</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- 研究目的 -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        🎯 研究目的
+                    </h3>
+                </div>
+                <div style="font-size: var(--font-size-xl); line-height: 1.6; text-align: center; background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 12px;">
+                    組込みシステム開発における<strong>V字型プロセス</strong>を対象として、<br>
+                    生成AI時代における<strong>熟練技術者の主体的活動</strong>を体系化し、<br>
+                    <strong style="color: var(--accent-orange);">生産性向上と工学的責任担保を両立</strong>する方法論を提示する
+                </div>
+            </div>
+
+            <!-- 主な貢献 -->
+            <div class="content-card animate-fade-in stagger-1" style="margin-top: var(--spacing-lg);">
+                <div class="card-header">
+                    <div class="card-icon" style="background: var(--success-green); font-size: 2rem;">🏆</div>
+                    <div class="card-title">6つの主要貢献</div>
+                </div>
+                <div class="card-content">
+                    <div style="display: grid; gap: var(--spacing-md);">
+                        <!-- 貢献①② -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: var(--spacing-md);">
+                            <div class="content-card" style="border-left: 4px solid var(--primary-blue);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                                    <div style="background: var(--primary-blue); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">①</div>
+                                    <strong style="font-size: var(--font-size-lg);">V字型プロセス分析</strong>
+                                </div>
+                                <p style="color: var(--medium-gray);">V字型プロセス各工程の<strong>生成AI活用可能性を段階別に分析</strong>し、組込み特有の制約と課題を体系化</p>
+                            </div>
+                            
+                            <div class="content-card" style="border-left: 4px solid var(--accent-orange);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                                    <div style="background: var(--accent-orange); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">②</div>
+                                    <strong style="font-size: var(--font-size-lg);">ハードウェア仮想化API</strong>
+                                </div>
+                                <p style="color: var(--medium-gray);"><strong>設計空間事前構造化手法</strong>により、生成AIにハードウェア制約を適切に伝達する仕組み</p>
+                            </div>
+                        </div>
+
+                        <!-- 貢献③④ -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: var(--spacing-md);">
+                            <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                                    <div style="background: var(--success-green); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">③</div>
+                                    <strong style="font-size: var(--font-size-lg);">Skills化方法論</strong>
+                                </div>
+                                <p style="color: var(--medium-gray);"><strong>3項組(I,S,O)による工程形式化</strong>とSkills化により、熟練ノウハウを構造化・継承可能化</p>
+                            </div>
+                            
+                            <div class="content-card" style="border-left: 4px solid var(--warning-yellow);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                                    <div style="background: var(--warning-yellow); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">④</div>
+                                    <strong style="font-size: var(--font-size-lg);">メインループ型設計</strong>
+                                </div>
+                                <p style="color: var(--medium-gray);"><strong>実時間制約対応設計</strong>パターンにより、リアルタイム性とAI支援を両立するアーキテクチャ</p>
+                            </div>
+                        </div>
+
+                        <!-- 貢献⑤⑥ -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: var(--spacing-md);">
+                            <div class="content-card" style="border-left: 4px solid var(--warning-red);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                                    <div style="background: var(--warning-red); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">⑤</div>
+                                    <strong style="font-size: var(--font-size-lg);">GOMA実証実験</strong>
+                                </div>
+                                <p style="color: var(--medium-gray);">リアルタイムOS「GOMA」による<strong>実証実験</strong>で、5.8倍の生産性向上と107.8℃事件での堅牢性を検証</p>
+                            </div>
+                            
+                            <div class="content-card" style="border-left: 4px solid var(--dark-slate);">
+                                <div style="display: flex; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                                    <div style="background: var(--dark-slate); color: white; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">⑥</div>
+                                    <strong style="font-size: var(--font-size-lg);">3層構造フレームワーク</strong>
+                                </div>
+                                <p style="color: var(--medium-gray);"><strong>統合的な生成AI活用フレームワーク</strong>による、設計空間・プロセス空間・V&V空間の段階的構造化</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 研究のポジショニング -->
+            <div class="content-card animate-fade-in stagger-2" style="background: var(--light-gray); margin-top: var(--spacing-lg);">
+                <div class="card-header">
+                    <div class="card-icon">🔬</div>
+                    <div class="card-title">本研究の独自性・新規性</div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                    <div style="text-align: center; padding: var(--spacing-md); background: var(--background); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-sm);">🎯</div>
+                        <strong style="color: var(--primary-blue);">体系的アプローチ</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">
+                            従来の個別技術ではなく、<br>全工程を統合した方法論
+                        </p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: var(--background); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-sm);">🏗️</div>
+                        <strong style="color: var(--success-green);">実証的検証</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">
+                            理論だけでなく、<br>GOMA実装による定量評価
+                        </p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: var(--background); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-sm);">👥</div>
+                        <strong style="color: var(--accent-orange);">人間中心設計</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">
+                            熟練技術者の主体性を<br>維持したAI活用設計
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 期待される効果 -->
+            <div style="text-align: center; margin-top: var(--spacing-lg); padding: var(--spacing-xl); background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: white; border-radius: 16px;" class="animate-fade-in stagger-3">
+                <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-md); color: white;">
+                    🚀 期待される成果
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-lg);">
+                    <div>
+                        <div style="font-size: 3rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: var(--spacing-xs);">25.6%</div>
+                        <div style="font-size: var(--font-size-lg); font-weight: 600;">開発期間短縮</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 3rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: var(--spacing-xs);">31.5%</div>
+                        <div style="font-size: var(--font-size-lg); font-weight: 600;">バグ削減</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 3rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: var(--spacing-xs);">98.7%</div>
+                        <div style="font-size: var(--font-size-lg); font-weight: 600;">制約充足率</div>
+                    </div>
+                </div>
+                <p style="font-size: var(--font-size-lg); opacity: 0.95; margin-top: var(--spacing-md);">
+                    組込みシステム開発における<strong>生産性と品質の同時向上</strong>を実現
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        // Slide-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click effects to contribution cards
+            const contributionCards = document.querySelectorAll('.content-card[style*="border-left"]');
+            contributionCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Highlight effect
+                    const originalTransform = this.style.transform;
+                    this.style.transform = 'scale(1.02)';
+                    this.style.boxShadow = '0 8px 24px rgba(0,102,204,0.3)';
+                    
+                    setTimeout(() => {
+                        this.style.transform = originalTransform;
+                        this.style.boxShadow = '';
+                    }, 300);
+                });
+            });
+            
+            // Animate achievement numbers
+            setTimeout(() => {
+                const achievementNumbers = document.querySelectorAll('[style*="font-family: \'JetBrains Mono\'"]');
+                achievementNumbers.forEach((num, index) => {
+                    setTimeout(() => {
+                        num.style.animation = 'pulse 2s infinite';
+                    }, index * 500 + 1000);
+                });
+            }, 2000);
+            
+            console.log('📄 Research Objectives Slide (4/25) Loaded');
+        });
+    </script>
+</body>
+</html>

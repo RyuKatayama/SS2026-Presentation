@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 13: 設計空間構造化の効果 ⭐ | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">13 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 52%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">設計空間構造化の効果 ⭐</h1>
+            <p class="slide-subtitle">第1層実装による劇的な改善効果の定量実証</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- 劇的改善の概要 -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        🚀 第1層による劇的改善効果
+                    </h3>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg);">
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 3rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: var(--spacing-xs);">45% → 89%</div>
+                        <div style="font-size: var(--font-size-lg); font-weight: 600;">コンパイル成功率</div>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 3rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: var(--spacing-xs);">67% → 8%</div>
+                        <div style="font-size: var(--font-size-lg); font-weight: 600;">メモリ制約違反</div>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 3rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: var(--spacing-xs);">±40% → ±15%</div>
+                        <div style="font-size: var(--font-size-lg); font-weight: 600;">実行時間予測精度</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Before/After比較表 -->
+            <div class="content-card animate-fade-in stagger-1" style="margin-top: var(--spacing-lg);">
+                <div class="card-header">
+                    <div class="card-icon">🔄</div>
+                    <div class="card-title">従来手法 vs 提案手法 詳細比較</div>
+                </div>
+                <div class="card-content">
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: var(--font-size-sm);">
+                            <thead>
+                                <tr style="background: var(--light-gray);">
+                                    <th style="padding: var(--spacing-sm); text-align: left; border-bottom: 2px solid var(--medium-gray);">評価項目</th>
+                                    <th style="padding: var(--spacing-sm); text-align: center; border-bottom: 2px solid var(--medium-gray);">従来手法（構造化前）</th>
+                                    <th style="padding: var(--spacing-sm); text-align: center; border-bottom: 2px solid var(--medium-gray);">提案手法（構造化後）</th>
+                                    <th style="padding: var(--spacing-sm); text-align: center; border-bottom: 2px solid var(--medium-gray);">改善効果</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: var(--spacing-sm); font-weight: 600;">メモリ超過コード生成</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; color: var(--warning-red); font-weight: 600;">❌ 67%発生</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; color: var(--success-green); font-weight: 600;">✅ 8%に削減</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">87%改善</td>
+                                </tr>
+                                <tr style="background: var(--light-gray);">
+                                    <td style="padding: var(--spacing-sm); font-weight: 600;">リアルタイム制約無視</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; color: var(--warning-red); font-weight: 600;">❌ 制約考慮なし</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; color: var(--success-green); font-weight: 600;">✅ 自動チェック実装</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">98%充足</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: var(--spacing-sm); font-weight: 600;">ハードウェア依存コード</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; color: var(--warning-red); font-weight: 600;">❌ 移植性低い</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; color: var(--success-green); font-weight: 600;">✅ 抽象化レイヤ</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">移植性向上</td>
+                                </tr>
+                                <tr style="background: var(--light-gray);">
+                                    <td style="padding: var(--spacing-sm); font-weight: 600;">手動制約確認作業</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; color: var(--warning-red); font-weight: 600;">❌ 工数大・見落とし</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; color: var(--success-green); font-weight: 600;">✅ API自動検証</td>
+                                    <td style="padding: var(--spacing-sm); text-align: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">76%工数削減</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 定量効果の詳細分析 -->
+            <div class="content-grid two-col animate-fade-in stagger-2">
+                <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">📊</div>
+                        <div class="card-title">コンパイル成功率の大幅向上</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs);">
+                                <span>従来手法</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--warning-red);">45%</span>
+                            </div>
+                            <div style="background: var(--light-gray); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 45%; height: 100%; background: var(--warning-red);"></div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-xs);">
+                                <span>提案手法</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">89%</span>
+                            </div>
+                            <div style="background: var(--light-gray); height: 8px; border-radius: 4px; overflow: hidden;">
+                                <div style="width: 89%; height: 100%; background: var(--success-green);"></div>
+                            </div>
+                        </div>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray);">
+                            pre-ACDによる制約の明示的管理により、生成AIが制約に合致するコードを生成
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--primary-blue);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--primary-blue);">⏱️</div>
+                        <div class="card-title">実行時間予測精度の向上</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <div style="text-align: center; padding: var(--spacing-md); background: rgba(239, 68, 68, 0.1); border-radius: 8px; margin-bottom: var(--spacing-sm);">
+                                <div style="font-size: var(--font-size-lg); font-weight: 700; color: var(--warning-red);">従来: ±40%誤差</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--medium-gray);">実用不可能レベル</div>
+                            </div>
+                            <div style="text-align: center; padding: var(--spacing-md); background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                                <div style="font-size: var(--font-size-lg); font-weight: 700; color: var(--success-green);">提案: ±15%誤差</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--medium-gray);">実用可能レベル</div>
+                            </div>
+                        </div>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray);">
+                            ハードウェア制約の事前構造化により、WCET予測精度が62%向上
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実際のプロジェクトでの検証結果 -->
+            <div class="expandable-section animate-fade-in stagger-3">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>🚗 実プロジェクトでの検証データ</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);">
+                        <div style="background: rgba(0, 102, 204, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--primary-blue);">
+                            <strong style="color: var(--primary-blue); display: block; margin-bottom: var(--spacing-sm);">🏭 車載ECU制御システム</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• プロセッサ: ARM Cortex-M7 @ 400MHz</li>
+                                <li>• メモリ: 512KB Flash, 256KB RAM</li>
+                                <li>• 制約充足率: <strong style="color: var(--success-green);">42% → 91%</strong></li>
+                                <li>• 開発期間: <strong style="color: var(--success-green);">28%短縮</strong></li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255, 107, 53, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--accent-orange);">
+                            <strong style="color: var(--accent-orange); display: block; margin-bottom: var(--spacing-sm);">🏠 IoTセンサーノード</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• プロセッサ: ESP32-C3 @ 160MHz</li>
+                                <li>• メモリ: 4MB Flash, 400KB SRAM</li>
+                                <li>• バッテリー消費: <strong style="color: var(--success-green);">43%削減</strong></li>
+                                <li>• 通信安定性: <strong style="color: var(--success-green);">2.1倍向上</strong></li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(16, 185, 129, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--success-green);">
+                            <strong style="color: var(--success-green); display: block; margin-bottom: var(--spacing-sm);">🤖 産業用ロボット制御</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• プロセッサ: TI TMS570 @ 300MHz</li>
+                                <li>• 安全要求: IEC 61508 SIL 3</li>
+                                <li>• 制御精度: <strong style="color: var(--success-green);">1.8倍向上</strong></li>
+                                <li>• 故障検出率: <strong style="color: var(--success-green);">96.2%達成</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 改善要因分析 -->
+            <div class="content-card animate-fade-in stagger-4" style="background: var(--light-blue); border: 2px solid var(--primary-blue); margin-top: var(--spacing-lg);">
+                <div style="text-align: center; margin-bottom: var(--spacing-md);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--text-dark);">
+                        🔬 改善要因の分析
+                    </h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md);">
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs); color: var(--dark-slate);">🎯</div>
+                        <strong>制約の明示化</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">曖昧な制約条件を<br>定量的に明文化</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs); color: var(--primary-blue);">🔄</div>
+                        <strong>フィードバックループ</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">実行時違反検出から<br>設計パラメータ改善</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs); color: var(--success-green);">⚡</div>
+                        <strong>自動化効果</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">手動確認作業の<br>大幅な工数削減</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次章への接続 -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-xl); background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: white; border-radius: 16px;" class="animate-fade-in stagger-5">
+                <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-md); color: white;">
+                    🏆 第1層の成功実証
+                </h3>
+                <p style="font-size: var(--font-size-lg); opacity: 0.95; margin-bottom: var(--spacing-md);">
+                    ハードウェア制約の事前構造化により、<br>
+                    <strong>実用レベルでの生成AI活用が実現</strong>
+                </p>
+                <p style="font-size: var(--font-size-md); opacity: 0.85;">
+                    次のスライドで第1層の要点をまとめ、第2層の詳細説明に進みます
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to metrics
+            setTimeout(() => {
+                const metrics = document.querySelectorAll('[style*="font-family: \'JetBrains Mono\'"]');
+                metrics.forEach((metric, index) => {
+                    setTimeout(() => {
+                        metric.style.animation = 'pulse 2s infinite';
+                    }, index * 300 + 1000);
+                });
+            }, 2000);
+            
+            console.log('📄 Enhanced Design Space Structuring Effects Slide (13/25) Loaded');
+        });
+    </script>
+</body>
+</html>

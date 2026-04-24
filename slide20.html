@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 20: 実証実験成果まとめ | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">20 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 80%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">実証実験成果まとめ</h1>
+            <p class="slide-subtitle">GOMA実験による3層構造フレームワークの有効性確認</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- 実証成果の要約 -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        ✅ 実証成果
+                    </h3>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(200px, 1fr)); gap: var(--spacing-lg);">
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">⚡</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">開発効率</strong>
+                        <p style="font-size: var(--font-size-lg); font-weight: 700; color: var(--accent-orange);">25.6%の期間短縮を達成</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">🛡️</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">品質向上</strong>
+                        <p style="font-size: var(--font-size-lg); font-weight: 700; color: var(--success-green);">バグ31.5%削減、テスト工数19.4%短縮</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">⏱️</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">実時間性</strong>
+                        <p style="font-size: var(--font-size-lg); font-weight: 700; color: var(--primary-blue);">98.7%の制約充足率</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">🔥</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">堅牢性</strong>
+                        <p style="font-size: var(--font-size-lg); font-weight: 700; color: var(--warning-red);">想定外状況(107.8℃)での継続動作</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 重要な学びと知見 -->
+            <div class="content-grid two-col animate-fade-in stagger-1">
+                <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">💡</div>
+                        <div class="card-title">重要な学び</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="styled-list">
+                            <li><strong>3層構造の有効性確認</strong>: 責任分界が明確化され、各層の役割が適切に機能</li>
+                            <li><strong>人間中心設計の重要性</strong>: 生成AI支援下でも熟練技術者判断が決定的に重要</li>
+                            <li><strong>事前構造化の効果</strong>: 設計空間とプロセス空間の構造化により生成コードの実用性が大幅向上</li>
+                            <li><strong>危機対応能力</strong>: 想定外状況での適応的制御により、システム全体の堅牢性を実証</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--warning-yellow);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--warning-yellow);">⚠️</div>
+                        <div class="card-title">限界・課題</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="styled-list">
+                            <li><strong>規模の制約</strong>: 中規模システム（GOMA）での検証のみ、大規模システムでの実証が必要</li>
+                            <li><strong>Skills化コスト</strong>: 初期のSkills作成に学習コストと工数投資が必要</li>
+                            <li><strong>専門性要求</strong>: 熟練技術者の継続的関与が不可欠、完全自動化は困難</li>
+                            <li><strong>ドメイン依存性</strong>: 車載制御以外のドメインでの汎用性検証が今後の課題</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 107.8℃事件の詳細インサイト -->
+            <div class="content-card animate-fade-in stagger-2" style="background: rgba(239, 68, 68, 0.05); border: 2px solid var(--warning-red);">
+                <div class="card-header">
+                    <div class="card-icon" style="background: var(--warning-red);">🔥</div>
+                    <div class="card-title">107.8℃事件から得られた重要インサイト</div>
+                </div>
+                <div class="card-content">
+                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--spacing-lg); align-items: center;">
+                        <div>
+                            <div style="text-align: center; padding: var(--spacing-lg); background: rgba(239, 68, 68, 0.1); border-radius: 12px;">
+                                <div style="font-size: 3rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: var(--warning-red);">107.8℃</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--medium-gray);">設計想定 85℃ + 22.8℃</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--warning-red); margin-bottom: var(--spacing-sm);">3層構造による協調的危機対応</h4>
+                            <ol style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-bottom: var(--spacing-md);">
+                                <li><strong>第1層</strong>: 温度センサー異常値を即座に検出、制約パラメータを動的再計算</li>
+                                <li><strong>第2層</strong>: 高温モード用Skillを自動選択、緊急制御手順を実行</li>
+                                <li><strong>第3層</strong>: 熟練技術者がリアルタイム判断、安全性優先制御に移行決定</li>
+                            </ol>
+                            <div style="padding: var(--spacing-sm); background: rgba(16, 185, 129, 0.1); border-radius: 6px;">
+                                <strong style="color: var(--success-green);">結果:</strong> システム停止を回避し、15分後の正常復帰を実現
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 統計的検証結果 -->
+            <div class="expandable-section animate-fade-in stagger-3">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>📈 統計的検証結果とエビデンス</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(300px, 1fr)); gap: var(--spacing-md);">
+                        <div style="background: rgba(0, 102, 204, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--primary-blue);">
+                            <strong style="color: var(--primary-blue); display: block; margin-bottom: var(--spacing-sm);">📊 実験規模</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• プロジェクト数: 3件（独立検証）</li>
+                                <li>• 実験期間: 6ヶ月間</li>
+                                <li>• 参加エンジニア: 延べ12名</li>
+                                <li>• 総開発時間: 1,480時間</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(16, 185, 129, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--success-green);">
+                            <strong style="color: var(--success-green); display: block; margin-bottom: var(--spacing-sm);">✅ 統計的有意性</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 開発期間短縮: p < 0.01 (高度有意)</li>
+                                <li>• バグ削減効果: p < 0.05 (有意)</li>
+                                <li>• 制約充足率向上: p < 0.001 (極めて高度有意)</li>
+                                <li>• 信頼区間: 95% CI確保</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255, 107, 53, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--accent-orange);">
+                            <strong style="color: var(--accent-orange); display: block; margin-bottom: var(--spacing-sm);">🔍 品質検証</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• コードレビュー: 100%実施</li>
+                                <li>• 単体テスト: 平均カバレッジ 92.1%</li>
+                                <li>• 結合テスト: 全シナリオ通過</li>
+                                <li>• 外部監査: 第三者機関による検証済み</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 今後の展開 -->
+            <div class="content-card animate-fade-in stagger-4" style="background: var(--light-blue); border: 2px solid var(--primary-blue); margin-top: var(--spacing-lg);">
+                <div style="text-align: center; margin-bottom: var(--spacing-md);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--text-dark);">
+                        🚀 今後の展開方向
+                    </h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(250px, 1fr)); gap: var(--spacing-md);">
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs); color: var(--dark-slate);">🏗️</div>
+                        <strong>大規模システム適用</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">自動車・航空機レベルでの<br>段階的スケールアップ実験</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs); color: var(--accent-orange);">⚙️</div>
+                        <strong>Skills化プロセス効率化</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">自動生成・更新メカニズム<br>既存文書からの抽出自動化</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs); color: var(--success-green);">🌐</div>
+                        <strong>多様ドメイン横展開</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">医療機器・産業制御・IoT<br>汎用化フレームワーク整備</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.8); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs); color: var(--primary-blue);">👥</div>
+                        <strong>組織導入方法論</strong>
+                        <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin-top: var(--spacing-xs);">チーム単位での導入手順<br>段階的導入ガイドライン策定</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次章への接続 -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-lg); background: linear-gradient(135deg, var(--success-green), #059669); color: white; border-radius: 16px;" class="animate-fade-in stagger-5">
+                <p style="font-size: var(--font-size-lg); opacity: 0.95;">
+                    GOMA実験により3層構造フレームワークの有効性を実証<br>
+                    次章では<strong>3層構造の全体像</strong>を再度整理し、<br>
+                    <strong>研究成果の統合的評価</strong>に進みます
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 Verification Experiment Results Summary Slide (20/25) Loaded');
+        });
+    </script>
+</body>
+</html>

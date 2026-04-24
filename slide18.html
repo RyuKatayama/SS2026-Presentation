@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 18: GOMA実証実験の設計 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">18 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 72%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">GOMA実証実験の設計</h1>
+            <p class="slide-subtitle">話題沸騰ポットによる3層構造フレームワークの実証</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- GOMA概要 -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        🍲 実証対象: 話題沸騰ポット「GOMA」
+                    </h3>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(250px, 1fr)); gap: var(--spacing-lg);">
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">🍲</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">SESSAME 話題沸騰ポット</strong>
+                        <p style="font-size: var(--font-size-sm); opacity: 0.9;">RTOSなし・メインループ制御</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">⏱️</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">1ms周期制御</strong>
+                        <p style="font-size: var(--font-size-sm); opacity: 0.9;">高精度タイミング制御要求</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">🔄</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">並行実行</strong>
+                        <p style="font-size: var(--font-size-sm); opacity: 0.9;">温度監視・ヒーター制御・UI表示</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実験設計の詳細 -->
+            <div class="content-grid two-col animate-fade-in stagger-1">
+                <div class="content-card" style="border-left: 4px solid var(--primary-blue);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--primary-blue);">🎯</div>
+                        <div class="card-title">検証観点</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: var(--spacing-sm);">
+                            <div style="padding: var(--spacing-sm); background: rgba(0, 102, 204, 0.1); border-radius: 6px;">
+                                <strong style="color: var(--primary-blue);">1. 機能要求充足性</strong>
+                                <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin: var(--spacing-xs) 0 0 0;">安全な湯沸かし動作の実現確認</p>
+                            </div>
+                            <div style="padding: var(--spacing-sm); background: rgba(239, 68, 68, 0.1); border-radius: 6px;">
+                                <strong style="color: var(--warning-red);">2. 実時間制約充足</strong>
+                                <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin: var(--spacing-xs) 0 0 0;">応答性の良いUI・温度制御の保証</p>
+                            </div>
+                            <div style="padding: var(--spacing-sm); background: rgba(16, 185, 129, 0.1); border-radius: 6px;">
+                                <strong style="color: var(--success-green);">3. 開発効率向上</strong>
+                                <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin: var(--spacing-xs) 0 0 0;">従来手法との開発時間比較</p>
+                            </div>
+                            <div style="padding: var(--spacing-sm); background: rgba(245, 158, 11, 0.1); border-radius: 6px;">
+                                <strong style="color: var(--warning-yellow);">4. 品質保証</strong>
+                                <p style="font-size: var(--font-size-sm); color: var(--medium-gray); margin: var(--spacing-xs) 0 0 0;">安全性・信頼性の確保</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--accent-orange);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--accent-orange);">🔧</div>
+                        <div class="card-title">実験環境</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="background: var(--light-gray); padding: var(--spacing-md); border-radius: 8px; margin-bottom: var(--spacing-md);">
+                            <strong style="display: block; margin-bottom: var(--spacing-sm);">ハードウェア構成</strong>
+                            <div style="display: grid; gap: var(--spacing-xs); font-size: var(--font-size-sm);">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>プロセッサ</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace;">ARM Cortex-M4</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>Flash</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace;">128KB</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>RAM</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace;">64KB</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: var(--light-gray); padding: var(--spacing-md); border-radius: 8px;">
+                            <strong style="display: block; margin-bottom: var(--spacing-sm);">ペリフェラル</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0; margin: 0;">
+                                <li>• 温度センサー（NTC）</li>
+                                <li>• 水位センサー</li>
+                                <li>• ヒーター制御回路</li>
+                                <li>• LCD/LED表示・ボタン入力</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実装対象システムの詳細 -->
+            <div class="content-card animate-fade-in stagger-2" style="background: var(--light-blue); border: 2px solid var(--primary-blue);">
+                <div class="card-header">
+                    <div class="card-icon">🍲</div>
+                    <div class="card-title">実装対象システム詳細</div>
+                </div>
+                <div class="card-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(300px, 1fr)); gap: var(--spacing-md);">
+                        <div>
+                            <h4 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">話題沸騰ポット制御タスク</h4>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• <strong>温度制御</strong>: 水温監視・ヒーター制御</li>
+                                <li>• <strong>水位監視</strong>: 水位センサー・安全停止機能</li>
+                                <li>• <strong>表示・UI</strong>: LEDディスプレイ・ボタン入力処理</li>
+                                <li>• <strong>安全機能</strong>: 過熱防止・空焚き防止・自動停止</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary-blue); margin-bottom: var(--spacing-sm);">実時間制約要求</h4>
+                            <div style="display: grid; gap: var(--spacing-xs); font-size: var(--font-size-sm);">
+                                <div style="display: flex; justify-content: space-between; padding: var(--spacing-xs); background: rgba(255,255,255,0.8); border-radius: 4px;">
+                                    <span>メイン制御ループ</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">1ms周期</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: var(--spacing-xs); background: rgba(255,255,255,0.8); border-radius: 4px;">
+                                    <span>温度センサー読み取り</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">1ms以内</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: var(--spacing-xs); background: rgba(255,255,255,0.8); border-radius: 4px;">
+                                    <span>ヒーター制御応答</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">5ms以内</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: var(--spacing-xs); background: rgba(255,255,255,0.8); border-radius: 4px;">
+                                    <span>UI応答（ボタン）</span>
+                                    <span style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">10ms以内</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3層構造の適用方針 -->
+            <div class="expandable-section animate-fade-in stagger-3">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>🏗️ 3層構造フレームワークの適用方針</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div style="display: grid; gap: var(--spacing-md);">
+                        <div style="background: rgba(30, 41, 59, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--dark-slate);">
+                            <strong style="color: var(--dark-slate); display: block; margin-bottom: var(--spacing-sm);">🏗️ 第1層: 設計空間構造化</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• ARM Cortex-M4向けpre-ACD作成</li>
+                                <li>• HW仮想化API実装（温度・水位・ヒーター）</li>
+                                <li>• 実時間制約の自動チェック機能</li>
+                                <li>• 話題沸騰ポット特有制約の抽象化</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(255, 107, 53, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--accent-orange);">
+                            <strong style="color: var(--accent-orange); display: block; margin-bottom: var(--spacing-sm);">⚙️ 第2層: プロセス空間構造化</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• SESSAME手法の家電制御向けSkills化</li>
+                                <li>• メインループアーキテクチャの実装</li>
+                                <li>• 温度制御Skillsチェーン構築</li>
+                                <li>• 品質ゲートによる工程間検証</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: rgba(0, 102, 204, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--primary-blue);">
+                            <strong style="color: var(--primary-blue); display: block; margin-bottom: var(--spacing-sm);">🔬 第3層: 熟練技術者主体V&V</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 家電制御専門家による最終検証</li>
+                                <li>• 家電安全規格準拠の安全性確認</li>
+                                <li>• 想定外状況での適応的対応検証</li>
+                                <li>• AI支援結果の人的判断・承認</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 評価指標と成功基準 -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-xl); background: linear-gradient(135deg, var(--success-green), #059669); color: white; border-radius: 16px;" class="animate-fade-in stagger-4">
+                <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-md); color: white;">
+                    📊 評価指標と成功基準
+                </h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(200px, 1fr)); gap: var(--spacing-lg); margin-top: var(--spacing-lg);">
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">⚡</div>
+                        <strong>開発効率</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">目標: 20%以上短縮</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">🐛</div>
+                        <strong>品質向上</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">目標: バグ25%削減</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">⏱️</div>
+                        <strong>実時間性</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">目標: 95%制約充足</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">🔄</div>
+                        <strong>堅牢性</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">想定外状況での適応性</span>
+                    </div>
+                </div>
+                
+                <p style="font-size: var(--font-size-lg); opacity: 0.95; margin-top: var(--spacing-md);">
+                    次のスライドで<strong>実際の測定結果</strong>と<strong>5.8倍の生産性向上</strong>を報告します
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 GOMA Verification Experiment Design Slide (18/25) Loaded');
+        });
+    </script>
+</body>
+</html>

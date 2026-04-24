@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 15: 第2層 - プロセス空間の事前構造化 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">15 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 60%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">第2層 - プロセス空間の事前構造化</h1>
+            <p class="slide-subtitle">Skills化による熟練ノウハウの構造化・継承</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- Skills化の定義 -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        ⚙️ Skills化とは
+                    </h3>
+                </div>
+                <div style="font-size: var(--font-size-lg); line-height: 1.6; background: rgba(255,255,255,0.1); padding: var(--spacing-lg); border-radius: 12px;">
+                    特定工程の<strong style="color: var(--accent-orange);">実行手順・判断基準・成果物テンプレート</strong>を文書化し、<br>
+                    生成AIに注入可能な<strong>構造化文書として外部化</strong>する手法<br>
+                    <span style="font-size: var(--font-size-md); opacity: 0.8;">※ SE/SWEにおける「プロセス」と本質的に同じ概念</span>
+                </div>
+            </div>
+
+            <!-- 3項組(I,S,O)による形式化 -->
+            <div class="content-card animate-fade-in stagger-1">
+                <div class="card-header">
+                    <div class="card-icon">📋</div>
+                    <div class="card-title">3項組(I,S,O)による形式化</div>
+                </div>
+                <div class="card-content">
+                    <div style="background: var(--light-gray); padding: var(--spacing-lg); border-radius: 12px; margin-bottom: var(--spacing-md);">
+                        <div class="code-block" style="background: transparent; padding: 0;">
+<span class="code-comment">// Skills化の数学的定義</span>
+<span class="code-keyword">Skill</span> := (Input, Steps, Output)
+
+<span class="code-keyword">Input</span>  := 前工程からの成果物 + 制約条件 + 要求仕様
+<span class="code-keyword">Steps</span>  := 実行手順 + 判断基準 + 品質チェック + 検証方法
+<span class="code-keyword">Output</span> := 次工程への成果物 + 検証結果 + 品質メトリクス</div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minMax(300px, 1fr)); gap: var(--spacing-md);">
+                        <div style="background: rgba(16, 185, 129, 0.1); padding: var(--spacing-md); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                            <strong style="color: var(--success-green); display: block; margin-bottom: var(--spacing-sm);">📥 Input（入力）</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 前工程の成果物（設計書・仕様書等）</li>
+                                <li>• ハードウェア制約（pre-ACD）</li>
+                                <li>• 品質要求・性能要求</li>
+                                <li>• 利用可能リソース情報</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255, 107, 53, 0.1); padding: var(--spacing-md); border-radius: 8px; border-left: 4px solid var(--accent-orange);">
+                            <strong style="color: var(--accent-orange); display: block; margin-bottom: var(--spacing-sm);">⚙️ Steps（手順）</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 段階的実行ステップの定義</li>
+                                <li>• 各段階での判断基準・閾値</li>
+                                <li>• 品質チェックポイント</li>
+                                <li>• エラー処理・例外対応手順</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(0, 102, 204, 0.1); padding: var(--spacing-md); border-radius: 8px; border-left: 4px solid var(--primary-blue);">
+                            <strong style="color: var(--primary-blue); display: block; margin-bottom: var(--spacing-sm);">📤 Output（出力）</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 次工程への標準化成果物</li>
+                                <li>• 検証・テスト結果</li>
+                                <li>• 品質メトリクス・KPI</li>
+                                <li>• トレーサビリティ情報</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 詳細設計Skillの具体例 -->
+            <div class="content-card animate-fade-in stagger-2" style="border-left: 4px solid var(--primary-blue);">
+                <div class="card-header">
+                    <div class="card-icon" style="background: var(--primary-blue);">🛠️</div>
+                    <div class="card-title">詳細設計Skillの実装例</div>
+                </div>
+                <div class="card-content">
+                    <div class="code-block">
+<span class="code-comment">// 詳細設計Skill定義例</span>
+<span class="code-keyword">DetailedDesign_Skill</span> := {
+    <span class="code-keyword">Input:</span> {
+        basic_design_document,     <span class="code-comment">// 基本設計書</span>
+        hw_constraints_preACD,     <span class="code-comment">// HW制約(pre-ACD)</span>
+        performance_requirements,  <span class="code-comment">// 性能要求</span>
+        safety_requirements        <span class="code-comment">// 安全要求</span>
+    },
+    
+    <span class="code-keyword">Steps:</span> {
+        <span class="code-number">1.</span> <span class="code-string">"モジュール分割"</span> → {
+            method: <span class="code-string">"cohesion/coupling分析"</span>,
+            criteria: <span class="code-string">"cohesion≥0.8, coupling≤0.3"</span>,
+            tools: [<span class="code-string">"UML", "dependency_analyzer"</span>]
+        },
+        <span class="code-number">2.</span> <span class="code-string">"API設計"</span> → {
+            method: <span class="code-string">"contract-first design"</span>,
+            criteria: <span class="code-string">"type-safe, error-handling完備"</span>,
+            validation: <span class="code-string">"OpenAPI仕様生成"</span>
+        },
+        <span class="code-number">3.</span> <span class="code-string">"実装方針決定"</span> → {
+            method: <span class="code-string">"design pattern適用"</span>,
+            criteria: <span class="code-string">"保守性・拡張性・性能バランス"</span>,
+            review: <span class="code-string">"アーキテクチャレビュー実施"</span>
+        }
+    },
+    
+    <span class="code-keyword">Output:</span> {
+        detailed_design_document,  <span class="code-comment">// 詳細設計書</span>
+        implementation_guidelines, <span class="code-comment">// 実装ガイドライン</span>
+        api_specification,         <span class="code-comment">// API仕様書</span>
+        quality_metrics           <span class="code-comment">// 品質指標</span>
+    }
+}</div>
+                </div>
+            </div>
+
+            <!-- Skills化のメリットと効果 -->
+            <div class="content-grid two-col animate-fade-in stagger-3">
+                <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">🎯</div>
+                        <div class="card-title">Skills化の効果</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="styled-list">
+                            <li><strong>熟練ノウハウの外部化</strong>: 暗黙知を明示的な手順として文書化</li>
+                            <li><strong>生成AI注入可能</strong>: 構造化されたプロンプトとして活用</li>
+                            <li><strong>品質の標準化</strong>: 属人性を排除した一定品質の担保</li>
+                            <li><strong>継承・教育支援</strong>: 新人・若手への技術継承を効率化</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--accent-orange);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--accent-orange);">📈</div>
+                        <div class="card-title">定量的改善効果</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: var(--spacing-sm);">
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>工程実行時間</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">32%短縮</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>品質バラツキ</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">58%削減</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>新人教育期間</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">47%短縮</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SESSAME手法のSkills化実証 -->
+            <div class="expandable-section animate-fade-in stagger-4">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>🔬 SESSAME手法のSkills化実証例</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div style="display: grid; gap: var(--spacing-md);">
+                        <div style="background: rgba(0, 102, 204, 0.05); padding: var(--spacing-md); border-radius: 12px;">
+                            <strong style="color: var(--primary-blue); display: block; margin-bottom: var(--spacing-sm);">📊 SESSAME手法の分解結果</strong>
+                            <p style="color: var(--medium-gray); margin-bottom: var(--spacing-sm);">
+                                構造化分析・設計手法（SESSAME）を19個の独立したSkillに分解・形式化
+                            </p>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(150px, 1fr)); gap: var(--spacing-sm); font-size: var(--font-size-sm);">
+                                <div style="background: var(--background); padding: var(--spacing-sm); border-radius: 6px; text-align: center;">
+                                    <strong style="color: var(--primary-blue);">要求分析系</strong><br>
+                                    5 Skills
+                                </div>
+                                <div style="background: var(--background); padding: var(--spacing-sm); border-radius: 6px; text-align: center;">
+                                    <strong style="color: var(--accent-orange);">設計系</strong><br>
+                                    8 Skills
+                                </div>
+                                <div style="background: var(--background); padding: var(--spacing-sm); border-radius: 6px; text-align: center;">
+                                    <strong style="color: var(--success-green);">検証系</strong><br>
+                                    4 Skills
+                                </div>
+                                <div style="background: var(--background); padding: var(--spacing-sm); border-radius: 6px; text-align: center;">
+                                    <strong style="color: var(--warning-red);">管理系</strong><br>
+                                    2 Skills
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(16, 185, 129, 0.05); padding: var(--spacing-md); border-radius: 12px;">
+                            <strong style="color: var(--success-green); display: block; margin-bottom: var(--spacing-sm);">✅ 実証結果</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 生成AI + 熟練技術者の協調作業を実現</li>
+                                <li>• 各Skillが独立して実行・検証可能</li>
+                                <li>• 工程間の成果物受け渡しを標準化</li>
+                                <li>• トレーサビリティが完全に維持</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次章への接続 -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-lg); background: linear-gradient(135deg, var(--accent-orange), #EA580C); color: white; border-radius: 16px;" class="animate-fade-in stagger-5">
+                <p style="font-size: var(--font-size-lg); opacity: 0.95;">
+                    次のスライドでは<strong>メインループ型アーキテクチャ設計</strong>による<br>
+                    <strong>実時間制約対応の具体的手法</strong>を詳説します
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 Layer 2: Process Space Pre-structuring Slide (15/25) Loaded');
+        });
+    </script>
+</body>
+</html>

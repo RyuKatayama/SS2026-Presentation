@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 1: タイトル | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="title-slide">
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">1 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 4%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title animate-fade-in">組込みシステム開発における生成AI活用の可能性</h1>
+            <p class="slide-subtitle animate-fade-in stagger-1">～ V字型プロセス分析とメインループ型アーキテクチャの検討 ～</p>
+        </div>
+        
+        <div class="slide-content">
+            <div class="content-grid animate-fade-in stagger-2" style="margin-top: var(--spacing-xl);">
+                <div class="hero-card">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-md); margin-bottom: var(--spacing-lg);">
+                        <div style="font-size: 4rem;">👨‍💼</div>
+                        <div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.8; margin-bottom: var(--spacing-xs); text-transform: uppercase; letter-spacing: 0.05em;">発表者</div>
+                            <div style="font-size: var(--font-size-3xl); font-weight: 700; margin-bottom: var(--spacing-xs);">片山 立</div>
+                            <div style="font-size: var(--font-size-lg); opacity: 0.9;">夢・アーキテクティング工房</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg);">
+                        <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                            <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">📧</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.8; margin-bottom: var(--spacing-xs);">Email</div>
+                            <div style="font-size: var(--font-size-base); font-weight: 600;">ryuk@dreamam.net</div>
+                        </div>
+                        <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                            <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">🎓</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.8; margin-bottom: var(--spacing-xs);">学会</div>
+                            <div style="font-size: var(--font-size-base); font-weight: 600;">ソフトウェアシンポジウム2026</div>
+                        </div>
+                        <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                            <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">📅</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.8; margin-bottom: var(--spacing-xs);">日時</div>
+                            <div style="font-size: var(--font-size-base); font-weight: 600;">2026年6月</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-grid animate-fade-in stagger-3" style="margin-top: var(--spacing-lg);">
+                <div style="text-align: center; padding: var(--spacing-lg); background: rgba(255,255,255,0.1); border-radius: 16px; color: white;">
+                    <h3 style="font-size: var(--font-size-xl); font-weight: 600; margin-bottom: var(--spacing-sm); color: white;">🎯 発表のハイライト</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md);">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2.5rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: var(--spacing-xs); color: var(--accent-orange);">5.8×</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.9;">生産性向上</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2.5rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: var(--spacing-xs); color: var(--success-green);">107.8℃</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.9;">危機管理実証</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2.5rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: var(--spacing-xs); color: var(--warning-yellow);">3層</div>
+                            <div style="font-size: var(--font-size-sm); opacity: 0.9;">統合フレームワーク</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button disabled" id="prevBtn" disabled onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        // Slide-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom animations for title slide
+            setTimeout(() => {
+                const highlights = document.querySelectorAll('[style*="font-family: \'JetBrains Mono\'"]');
+                highlights.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.animation = 'pulse 2s infinite';
+                    }, index * 500);
+                });
+            }, 2000);
+            
+            // Add special keyboard shortcuts for title slide
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    window.navigation.nextSlide();
+                }
+            });
+            
+            console.log('📄 Title Slide (1/25) Loaded');
+        });
+    </script>
+</body>
+</html>

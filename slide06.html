@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 6: 生成AI活用段階分析 ⭐ | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Slide 6 specific styles */
+        .tooltip {
+            position: relative;
+            cursor: help;
+        }
+        
+        .tooltip-content {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark-slate);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+            pointer-events: none;
+        }
+        
+        .tooltip:hover .tooltip-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-8px);
+        }
+        
+        .rating-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .rating-high { background: var(--success-green); }
+        .rating-medium { background: var(--warning-yellow); }
+        .rating-low { background: var(--warning-red); }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">6 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 24%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">生成AI活用段階の分析結果 ⭐</h1>
+            <p class="slide-subtitle">V字型プロセスにおける生成AI活用可能性の体系的評価</p>
+        </div>
+        
+        <div class="slide-content">
+            <div class="v-process-visual animate-fade-in">
+                <h3 style="text-align: center; margin-bottom: var(--spacing-lg); color: var(--text-dark); font-size: var(--font-size-2xl);">V字型プロセス活用マップ</h3>
+                
+                <div class="v-shape">
+                    <!-- 左側（開発工程） -->
+                    <div class="process-steps">
+                        <div class="process-step step-long-term tooltip">
+                            <div class="rating-badge rating-low">★★☆</div>
+                            <strong style="color: var(--text-dark);">要求分析</strong>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 0.5rem;">
+                                文書整理・漏れ検出支援<br>
+                                <span style="color: var(--warning-red); font-weight: 600;">責任境界の曖昧性が課題</span>
+                            </div>
+                            <div class="tooltip-content">長期研究領域 - 責任境界の曖昧性</div>
+                        </div>
+                        
+                        <div class="process-step step-medium-effect tooltip">
+                            <div class="rating-badge rating-medium">★★★</div>
+                            <strong style="color: var(--text-dark);">基本設計</strong>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 0.5rem;">
+                                アーキテクチャ案生成<br>
+                                <span style="color: var(--warning-yellow); font-weight: 600;">ハードウェア制約理解が必要</span>
+                            </div>
+                            <div class="tooltip-content">中期適用可能 - ハードウェア制約理解必要</div>
+                        </div>
+                        
+                        <div class="process-step step-early-effect tooltip">
+                            <div class="rating-badge rating-high">★★★</div>
+                            <strong style="color: var(--text-dark);">詳細設計</strong>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 0.5rem;">
+                                コード雛形生成・最適化<br>
+                                <span style="color: var(--success-green); font-weight: 600;">高い生成精度を実現</span>
+                            </div>
+                            <div class="tooltip-content">早期効果領域 - 高い生成精度</div>
+                        </div>
+                        
+                        <div class="process-step step-early-effect tooltip" style="border-width: 3px; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2);">
+                            <div class="rating-badge rating-high" style="background: var(--primary-blue);">★★★</div>
+                            <strong style="color: var(--text-dark); font-size: var(--font-size-lg);">実装</strong>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 0.5rem;">
+                                コード生成・レビュー・デバッグ<br>
+                                <span style="color: var(--success-green); font-weight: 700;">パターン認識でLLM極めて有効</span>
+                            </div>
+                            <div class="tooltip-content">最高効果領域 - パターン認識で極めて有効</div>
+                        </div>
+                    </div>
+
+                    <!-- 中央のV字 -->
+                    <div class="v-center">
+                        <div class="v-symbol animate-float">V</div>
+                        <div style="writing-mode: vertical-rl; text-align: center; color: var(--medium-gray); font-weight: 600; font-size: var(--font-size-sm);">
+                            字型プロセス
+                        </div>
+                    </div>
+
+                    <!-- 右側（テスト工程） -->
+                    <div class="process-steps">
+                        <div class="process-step step-long-term tooltip">
+                            <div class="rating-badge rating-low">★★☆</div>
+                            <strong style="color: var(--text-dark);">受入テスト</strong>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 0.5rem;">
+                                ユーザー観点の検証<br>
+                                <span style="color: var(--warning-red); font-weight: 600;">文脈依存の判断が困難</span>
+                            </div>
+                            <div class="tooltip-content">長期研究領域 - 文脈依存判断困難</div>
+                        </div>
+                        
+                        <div class="process-step step-long-term tooltip">
+                            <div class="rating-badge rating-low">★☆☆</div>
+                            <strong style="color: var(--text-dark);">システムテスト</strong>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 0.5rem;">
+                                シナリオ作成支援<br>
+                                <span style="color: var(--warning-red); font-weight: 600;">システム全体理解が限界</span>
+                            </div>
+                            <div class="tooltip-content">長期研究領域 - システム全体理解が限界</div>
+                        </div>
+                        
+                        <div class="process-step step-long-term tooltip">
+                            <div class="rating-badge rating-low">★☆☆</div>
+                            <strong style="color: var(--text-dark);">統合テスト</strong>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 0.5rem;">
+                                モジュール間連携検証<br>
+                                <span style="color: var(--warning-red); font-weight: 600;">複雑性理解困難</span>
+                            </div>
+                            <div class="tooltip-content">長期研究領域 - 複雑性と依存関係理解困難</div>
+                        </div>
+                        
+                        <div class="process-step step-medium-effect tooltip">
+                            <div class="rating-badge rating-medium">★★☆</div>
+                            <strong style="color: var(--text-dark);">単体テスト</strong>
+                            <div style="font-size: 0.9rem; color: var(--medium-gray); margin-top: 0.5rem;">
+                                テストケース生成・自動化<br>
+                                <span style="color: var(--warning-yellow); font-weight: 600;">カバレッジ保証が課題</span>
+                            </div>
+                            <div class="tooltip-content">中期適用可能 - カバレッジ保証が課題</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: var(--spacing-lg); margin-top: var(--spacing-lg);">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-md); background: var(--background); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                        <div style="width: 20px; height: 20px; background: var(--success-green); border-radius: 50%;"></div>
+                        <span style="font-weight: 600;">早期効果領域 (即適用可)</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-md); background: var(--background); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                        <div style="width: 20px; height: 20px; background: var(--warning-yellow); border-radius: 50%;"></div>
+                        <span style="font-weight: 600;">中期適用可能</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-sm) var(--spacing-md); background: var(--background); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+                        <div style="width: 20px; height: 20px; background: var(--warning-red); border-radius: 50%;"></div>
+                        <span style="font-weight: 600;">長期研究領域</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="expandable-section animate-fade-in stagger-1">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>📊 詳細分析結果と戦略的インサイト</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div class="content-grid two-col">
+                        <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                            <div class="card-header">
+                                <div class="card-icon" style="background: var(--success-green);">🎯</div>
+                                <div class="card-title">即効性の高い活用領域</div>
+                            </div>
+                            <div class="card-content">
+                                下流工程（実装・詳細設計）では生成AIが極めて有効。パターン認識と反復作業にLLMの能力が最大限発揮される。
+                                <ul class="styled-list" style="margin-top: var(--spacing-sm);">
+                                    <li>コード生成精度の飛躍的向上</li>
+                                    <li>デバッグ・リファクタリング支援</li>
+                                    <li>テストケース自動生成</li>
+                                    <li>API仕様書からの実装自動化</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="content-card" style="border-left: 4px solid var(--warning-red);">
+                            <div class="card-header">
+                                <div class="card-icon" style="background: var(--warning-red);">⚠️</div>
+                                <div class="card-title">長期研究が必要な領域</div>
+                            </div>
+                            <div class="card-content">
+                                上流工程・テスト工程では文脈依存のトレードオフ判断が必要。LLMの本質的限界により熟練者主体のアプローチが不可欠。
+                                <ul class="styled-list" style="margin-top: var(--spacing-sm);">
+                                    <li>アーキテクチャ設計の複雑性</li>
+                                    <li>非機能要求の取り扱い困難</li>
+                                    <li>システム全体の整合性判断</li>
+                                    <li>ステークホルダー要求の解釈</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card animate-fade-in stagger-2" style="text-align: center; background: var(--primary-blue); color: white; margin-top: var(--spacing-md);">
+                <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-sm); color: white;">🔍 分析結論</h3>
+                <p style="font-size: var(--font-size-lg); opacity: 0.95;">
+                    V字型プロセス全体で生成AI活用効果に<strong>明確な段階性</strong>が存在。<br>
+                    下流工程の高い効果を活かしつつ、上流工程の課題解決には<br>
+                    <strong>3層構造による事前構造化アプローチ</strong>が必要不可欠。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        // Slide-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add special click effects for process steps
+            const processSteps = document.querySelectorAll('.process-step');
+            processSteps.forEach(step => {
+                step.addEventListener('click', function() {
+                    // Highlight effect
+                    const originalStyle = this.style.cssText;
+                    this.style.cssText += 'box-shadow: 0 0 0 3px var(--accent-orange) !important; transform: scale(1.05) !important;';
+                    
+                    setTimeout(() => {
+                        this.style.cssText = originalStyle;
+                    }, 500);
+                });
+            });
+            
+            // Animate rating badges on load
+            setTimeout(() => {
+                const badges = document.querySelectorAll('.rating-badge');
+                badges.forEach((badge, index) => {
+                    setTimeout(() => {
+                        badge.style.animation = 'pulse 1s ease-out';
+                    }, index * 200);
+                });
+            }, 1000);
+            
+            console.log('📄 Enhanced V-Process Analysis Slide (6/25) Loaded');
+        });
+    </script>
+</body>
+</html>

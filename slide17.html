@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド 17: Skillsチェーンによる工程連携 | SS2026プレゼンテーション</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <a href="index.html" class="nav-title">📚 SS2026 プレゼンテーション</a>
+        <div class="nav-controls">
+            <div class="progress-info" id="slideInfo">17 / 25</div>
+            <a href="index.html" class="nav-button outline">📋 目次</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" style="width: 68%;"></div>
+
+    <!-- Main Content -->
+    <div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">Skillsチェーンによる工程連携</h1>
+            <p class="slide-subtitle">Skills間の連携メカニズムと品質ゲート標準化</p>
+        </div>
+        
+        <div class="slide-content">
+            <!-- Skillsチェーンの概要 -->
+            <div class="content-card hero-card animate-fade-in">
+                <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+                    <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-sm); color: white;">
+                        🔗 Skillsチェーンの構造
+                    </h3>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minMax(200px, 1fr)); gap: var(--spacing-md);">
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">⛓️</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">連続実行</strong>
+                        <p style="font-size: var(--font-size-sm); opacity: 0.9;">各SkillのOutputが次SkillのInput</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">📋</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">統一形式</strong>
+                        <p style="font-size: var(--font-size-sm); opacity: 0.9;">成果物テンプレート標準化</p>
+                    </div>
+                    <div style="text-align: center; padding: var(--spacing-md); background: rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">✅</div>
+                        <strong style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); display: block;">品質保証</strong>
+                        <p style="font-size: var(--font-size-sm); opacity: 0.9;">工程間品質ゲート設置</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skillsチェーンの実装図 -->
+            <div class="content-card animate-fade-in stagger-1">
+                <div class="card-header">
+                    <div class="card-icon">🔄</div>
+                    <div class="card-title">V字プロセスのSkillsチェーン実装</div>
+                </div>
+                <div class="card-content">
+                    <div style="background: var(--light-gray); padding: var(--spacing-lg); border-radius: 12px;">
+                        <div class="code-block" style="background: transparent; padding: 0;">
+<span class="code-comment">// Skillsチェーンの構造定義</span>
+[要求分析Skill] → [基本設計Skill] → [詳細設計Skill] → [実装Skill]
+     ↓               ↓                 ↓               ↓
+  要求定義書      基本設計書        詳細設計書      ソースコード
+     +               +                 +               +
+  制約一覧        アーキテクチャ     実装方針        単体テスト
+     +               +                 +               +
+ 品質メトリクス   設計レビュー結果   詳細レビュー     コードレビュー</div>
+                    </div>
+                    
+                    <div style="margin-top: var(--spacing-md); display: grid; grid-template-columns: repeat(auto-fit, minWidth(300px, 1fr)); gap: var(--spacing-md);">
+                        <div style="background: rgba(245, 158, 11, 0.1); padding: var(--spacing-md); border-radius: 8px; border-left: 4px solid var(--warning-yellow);">
+                            <strong style="color: var(--warning-yellow); display: block; margin-bottom: var(--spacing-sm);">📥 Input標準化</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 前工程成果物の形式統一</li>
+                                <li>• 制約情報（pre-ACD）の継承</li>
+                                <li>• 品質基準・閾値の明示</li>
+                                <li>• トレーサビリティIDの連続性</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(16, 185, 129, 0.1); padding: var(--spacing-md); border-radius: 8px; border-left: 4px solid var(--success-green);">
+                            <strong style="color: var(--success-green); display: block; margin-bottom: var(--spacing-sm);">📤 Output標準化</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 次工程向けテンプレート準拠</li>
+                                <li>• 検証結果の構造化文書</li>
+                                <li>• 品質メトリクス自動算出</li>
+                                <li>• 課題・リスク情報の継承</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 品質ゲートの仕組み -->
+            <div class="content-grid two-col animate-fade-in stagger-2">
+                <div class="content-card" style="border-left: 4px solid var(--primary-blue);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--primary-blue);">🚪</div>
+                        <div class="card-title">品質ゲートによる工程間検証</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="code-block" style="font-size: 0.8rem;">
+<span class="code-comment">// 品質ゲート実装例</span>
+<span class="code-keyword">typedef struct</span> {
+    quality_metrics_t metrics;
+    validation_result_t validation;
+    bool gate_passed;
+    <span class="code-keyword">char</span>* failure_reason;
+} quality_gate_result_t;
+
+<span class="code-keyword">quality_gate_result_t</span> 
+<span class="code-function">validate_design_quality</span>(
+    design_document_t* design
+) {
+    quality_gate_result_t result = {<span class="code-number">0</span>};
+    
+    <span class="code-comment">// メトリクス計算</span>
+    result.metrics = calculate_metrics(design);
+    
+    <span class="code-comment">// 閾値チェック</span>
+    result.gate_passed = 
+        (result.metrics.complexity_score <= <span class="code-number">7.0</span>) &&
+        (result.metrics.coupling_ratio <= <span class="code-number">0.3</span>) &&
+        (result.metrics.coverage_rate >= <span class="code-number">0.85</span>);
+    
+    <span class="code-keyword">return</span> result;
+}</div>
+                    </div>
+                </div>
+
+                <div class="content-card" style="border-left: 4px solid var(--success-green);">
+                    <div class="card-header">
+                        <div class="card-icon" style="background: var(--success-green);">📊</div>
+                        <div class="card-title">品質メトリクス自動算出</div>
+                    </div>
+                    <div class="card-content">
+                        <div style="display: grid; gap: var(--spacing-sm);">
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>設計複雑度</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">≤ 7.0</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>結合度</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">≤ 0.3</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>カバレッジ率</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">≥ 85%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: var(--spacing-sm); background: var(--light-gray); border-radius: 6px;">
+                                <span>制約充足率</span>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--success-green);">≥ 95%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SESSAME手法のSkills化実証 -->
+            <div class="content-card animate-fade-in stagger-3" style="background: var(--light-blue); border: 2px solid var(--primary-blue);">
+                <div class="card-header">
+                    <div class="card-icon">🔬</div>
+                    <div class="card-title">SESSAME手法のSkills化実証</div>
+                </div>
+                <div class="card-content">
+                    <div style="margin-bottom: var(--spacing-md);">
+                        <p style="font-size: var(--font-size-lg); line-height: 1.6; color: var(--text-dark);">
+                            構造化分析・設計手法（SESSAME）を<strong>19個のSkill</strong>に分解し、<br>
+                            生成AI + 熟練技術者の協調作業を実現
+                        </p>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(150px, 1fr)); gap: var(--spacing-sm); margin-bottom: var(--spacing-md);">
+                        <div style="text-align: center; padding: var(--spacing-sm); background: rgba(245, 158, 11, 0.1); border-radius: 8px;">
+                            <div style="font-size: var(--font-size-lg); font-weight: 700; color: var(--warning-yellow);">5</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--medium-gray);">要求分析Skills</div>
+                        </div>
+                        <div style="text-align: center; padding: var(--spacing-sm); background: rgba(0, 102, 204, 0.1); border-radius: 8px;">
+                            <div style="font-size: var(--font-size-lg); font-weight: 700; color: var(--primary-blue);">8</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--medium-gray);">設計Skills</div>
+                        </div>
+                        <div style="text-align: center; padding: var(--spacing-sm); background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                            <div style="font-size: var(--font-size-lg); font-weight: 700; color: var(--success-green);">4</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--medium-gray);">検証Skills</div>
+                        </div>
+                        <div style="text-align: center; padding: var(--spacing-sm); background: rgba(239, 68, 68, 0.1); border-radius: 8px;">
+                            <div style="font-size: var(--font-size-lg); font-weight: 700; color: var(--warning-red);">2</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--medium-gray);">管理Skills</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 実装上の重要なポイント -->
+            <div class="expandable-section animate-fade-in stagger-4">
+                <button class="expand-trigger" onclick="window.navigation.toggleExpand(this)">
+                    <span>🔧 Skillsチェーン実装の重要ポイント</span>
+                    <span class="expand-icon">▼</span>
+                </button>
+                <div class="expand-content">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(300px, 1fr)); gap: var(--spacing-md);">
+                        <div style="background: rgba(16, 185, 129, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--success-green);">
+                            <strong style="color: var(--success-green); display: block; margin-bottom: var(--spacing-sm);">✅ 成果物の形式統一</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• JSONスキーマによる構造統一</li>
+                                <li>• テンプレートベース文書生成</li>
+                                <li>• 自動的な形式検証機能</li>
+                                <li>• バージョン管理・差分追跡</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(255, 107, 53, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--accent-orange);">
+                            <strong style="color: var(--accent-orange); display: block; margin-bottom: var(--spacing-sm);">🔗 トレーサビリティ確保</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• 要求IDの全工程継承</li>
+                                <li>• 変更履歴の自動記録</li>
+                                <li>• 影響範囲分析の自動化</li>
+                                <li>• 上流・下流の双方向リンク</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(0, 102, 204, 0.05); padding: var(--spacing-md); border-radius: 12px; border-left: 4px solid var(--primary-blue);">
+                            <strong style="color: var(--primary-blue); display: block; margin-bottom: var(--spacing-sm);">⚡ 自動化・効率化</strong>
+                            <ul style="font-size: var(--font-size-sm); color: var(--medium-gray); list-style: none; padding: 0;">
+                                <li>• CI/CDパイプラインとの統合</li>
+                                <li>• 品質メトリクス自動算出</li>
+                                <li>• レポート自動生成</li>
+                                <li>• 例外・エラーの早期検出</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: var(--spacing-md); padding: var(--spacing-md); background: rgba(99, 102, 241, 0.1); border-radius: 12px; border-left: 4px solid #6366F1;">
+                        <strong style="color: #6366F1; display: block; margin-bottom: var(--spacing-sm);">📈 効果測定結果</strong>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(200px, 1fr)); gap: var(--spacing-sm);">
+                            <div style="text-align: center;">
+                                <div style="font-size: var(--font-size-lg); font-weight: 700; color: var(--success-green);">43%向上</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--medium-gray);">工程間連携効率</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: var(--font-size-lg); font-weight: 700; color: var(--success-green);">67%削減</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--medium-gray);">成果物不備・再作業</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: var(--font-size-lg); font-weight: 700; color: var(--success-green);">91%達成</div>
+                                <div style="font-size: var(--font-size-sm); color: var(--medium-gray);">品質ゲート通過率</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 次章への接続 -->
+            <div style="text-align: center; margin-top: var(--spacing-xl); padding: var(--spacing-xl); background: linear-gradient(135deg, var(--warning-red), #DC2626); color: white; border-radius: 16px;" class="animate-fade-in stagger-5">
+                <h3 style="font-size: var(--font-size-2xl); font-weight: 700; margin-bottom: var(--spacing-md); color: white;">
+                    🔬 次章: GOMA実証実験
+                </h3>
+                <p style="font-size: var(--font-size-lg); opacity: 0.95; margin-bottom: var(--spacing-md);">
+                    理論・設計を実際のリアルタイムOS「GOMA」で実証し、<br>
+                    <strong>定量的効果と107.8℃事件での堅牢性</strong>を検証
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minWidth(150px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg);">
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">🎯</div>
+                        <strong>実験設計</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">検証観点・環境</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">📊</div>
+                        <strong>定量評価</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">5.8倍生産性向上</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.1); padding: var(--spacing-md); border-radius: 8px;">
+                        <div style="font-size: 1.5rem; margin-bottom: var(--spacing-xs);">🔥</div>
+                        <strong>危機対応</strong><br>
+                        <span style="font-size: var(--font-size-sm); opacity: 0.8);">107.8℃事件</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <nav class="nav-footer">
+        <button class="nav-button" id="prevBtn" onclick="navigatePrev()">⬅️ 前へ</button>
+        <a href="index.html" class="nav-button secondary">📋 目次</a>
+        <button class="nav-button" id="nextBtn" onclick="navigateNext()">次へ ➡️</button>
+    </nav>
+
+    <!-- Include Navigation JavaScript -->
+    <script src="assets/navigation.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 Skills Chain Integration Slide (17/25) Loaded');
+        });
+    </script>
+</body>
+</html>
